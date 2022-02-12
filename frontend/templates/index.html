@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Duolingo Plus Free 2022{% endblock %}
+{% block content %}
+<section class="hero is-fullheight">
+<div class="container">
+    <h1 class="title has-text-centered">Welcome to Duolingo Plus Free!</h1>
+    <h2 class="subtitle has-text-centered">Get 7 days free, send your <a target="blank" href="https://support.duolingo.com/hc/en-us/articles/4404225309581-How-does-the-referral-program-work-">invition link</a> below</h2>
+    <div class="columns">
+        <div class="column">
+            <div class="field">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="column has-text-centered">
+                        <h3 class="subtitle" {% if message.tags == "error" %} style="color:red" {% elif message.tags == "success" %} style="color:green" {% elif message.tags == "info"%} style="color:blue"{% endif %}>
+                            {{ message }}
+                        </h3>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            </div>
+            <form method="POST" class="post-form">{% csrf_token %}
+                <div class="field is-grouped has-addons">
+                    <div class="control has-icons-left">
+                        <input name="url" class="input is-medium is-link" type="input" placeholder="Put the link here" required>
+                        <span class="icon is-medium is-left">
+                            <i class="fas fa-external-link-alt"></i>
+                        </span>
+                        {% if start_after == 0 %}
+                            <p class="help">Your task will be launched instantly</p>
+                        {% else %}
+                            <p class="help">Your task will run after {{start_after}} seconds</p>
+                        {% endif %}
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-medium is-link">Submit</button>
+                    </div>
+
+                </div>
+            </form>
+            <br>
+            <div class="box">
+                <div class="columns">
+                    <div class="column"><i class="fas fa-play"></i> <font color="blue">{{running}}</font></div>
+                    <div class="column"><i class="fas fa-list"></i> <font color="grey">{{queued}}</font></div>
+                    <div class="column"><i class="fas fa-check-circle"></i> <font color="green">{{finished}}</font></div>
+                    <div class="column"><i class="fas fa-exclamation-circle"></i> <font color="red">{{errored}}</font></div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="field">* You can send the link more than once</div>
+                <div class="field">* No login or password required</div>
+                <div class="field">* Average task time 80 seconds</div>
+                <div class="field">* Only one slot for running</div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2230145565227830" data-ad-slot="2349321428" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock%}

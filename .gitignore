@@ -1,0 +1,10 @@
+__pycache__
+.DS_Store
+.git
+.venv
+.vscode
+db.sqlite3
+dev.sh
+env.lock
+static
+backend/migrations
