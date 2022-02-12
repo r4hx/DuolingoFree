@@ -1,3 +1,4 @@
+import os
 from datetime import timedelta
 
 from backend.models import Task
@@ -9,19 +10,21 @@ from frontend.forms import TaskForm
 
 
 def index(request):
+    max_unique_links_per_day = os.getenv("MAX_UNIQUE_LINKS_PER_DAY", 5)
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
             links_of_day = Task.objects.filter(
+                url=form.cleaned_data["url"],
                 created_at__range=[
                     timezone.now() - timedelta(days=1),
                     timezone.now(),
-                ]
+                ],
             ).count()
-            if links_of_day >= 5:
+            if links_of_day >= max_unique_links_per_day:
                 messages.info(
                     request,
-                    "You sent more than 5 links for the day",
+                    f"You sent more than {max_unique_links_per_day} links for the day",
                 )
                 return HttpResponseRedirect("/")
             form.save()
