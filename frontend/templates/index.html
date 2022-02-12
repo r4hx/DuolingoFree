@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Duolingo Plus Free 2022{% endblock %}
 {% block content %}
-<section class="hero is-fullheight">
+<section class="hero is-halfheight">
 <div class="container">
     <h1 class="title has-text-centered">Welcome to Duolingo Plus Free!</h1>
     <h2 class="subtitle has-text-centered">Get 7 days free, send your <a target="blank" href="https://support.duolingo.com/hc/en-us/articles/4404225309581-How-does-the-referral-program-work-">invition link</a> below</h2>
-    <div class="columns">
+    <div class="columns is-multiline">
         <div class="column">
             <div class="field">
             {% if messages %}
@@ -19,11 +19,11 @@
             {% endif %}
             </div>
             <form method="POST" class="post-form">{% csrf_token %}
-                <div class="field is-grouped has-addons">
+                <div class="field is-mobile has-addons has-addons-centered">
                     <div class="control has-icons-left">
                         <input name="url" class="input is-medium is-link" type="input" placeholder="Put the link here" required>
                         <span class="icon is-medium is-left">
-                            <i class="fas fa-external-link-alt"></i>
+                            <i class="fa-solid fa-bookmark"></i>
                         </span>
                         {% if start_after == 0 %}
                             <p class="help">Your task will be launched instantly</p>
@@ -37,23 +37,31 @@
 
                 </div>
             </form>
-            <br>
             <div class="box">
-                <div class="columns">
-                    <div class="column"><i class="fas fa-play"></i> <font color="blue">{{running}}</font></div>
-                    <div class="column"><i class="fas fa-list"></i> <font color="grey">{{queued}}</font></div>
-                    <div class="column"><i class="fas fa-check-circle"></i> <font color="green">{{finished}}</font></div>
-                    <div class="column"><i class="fas fa-exclamation-circle"></i> <font color="red">{{errored}}</font></div>
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column"><i class="fa-solid fa-play">&nbsp;&nbsp;&nbsp;{{running}}</i></div>
+                    <div class="column"><i class="fa-solid fa-hourglass">&nbsp;&nbsp;&nbsp;{{queued}}</i></div>
+                    <div class="column"><i class="fa-solid fa-check">&nbsp;&nbsp;&nbsp;{{finished}}</i></div>
                 </div>
             </div>
 
-            <div class="box">
-                <div class="field">* You can send the link more than once</div>
-                <div class="field">* No login or password required</div>
-                <div class="field">* Average task time 1 minute</div>
-                <div class="field">* Only one slot for running</div>
+            <div class="box has-text-centered">
+                <h1 class="title">How it works?</h1>
+                <iframe  src="https://www.youtube.com/embed/WR7Fl_4Wg5Y?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
+            <div class="box">
+                <div class="field">* You can send the link more than once.</div>
+                <div class="field">* No login or password required.</div>
+                <div class="field">* Average task time 1 minute.</div>
+                <div class="field">* Only one slot for running.</div>
+                <div class="field">* Any questions? Ask in <a href="https://t.me/duoplusfree" target="blank">the chat.</a></div>
+            </div>
+
         </div>
+
+
+
     </div>
 </div>
 </section>
