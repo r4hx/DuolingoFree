@@ -39,7 +39,7 @@ def index(request):
         running = Task.objects.filter(state=2).count()
         finished = Task.objects.filter(state=3).count()
         errored = Task.objects.filter(state=4).count()
-        start_after = (running + queued) * 75
+        start_after = (running + queued) * 60
         context = {
             "form": form,
             "queued": queued,
