@@ -2,6 +2,7 @@
 version: '3'
 
 services:
+
   migrate:
     build: .
     container_name: 'migrate'
@@ -11,38 +12,43 @@ services:
       && python3 manage.py makemigrations --force-color --no-input -v 3 backend
       && python3 manage.py makemigrations --force-color --no-input -v 3 frontend
       && python3 manage.py migrate --force-color -v 3
-      && python3 manage.py createsuperuser --noinput
-      && python3 manage.py collectstatic --noinput"
+      && python3 manage.py collectstatic --noinput
+      && python3 manage.py createsuperuser --noinput"
     environment:
       - DJANGO_SUPERUSER_USERNAME=admin
       - DJANGO_SUPERUSER_PASSWORD=admin
       - DJANGO_SUPERUSER_EMAIL=admin@example.com
-      - DEBUG=0
+      - DEBUG=1
       - MAX_UNIQUE_LINKS_PER_DAY=5
     volumes:
       - .:/app
+
   gunicorn:
     image: duolingofree_migrate
     container_name: 'gunicorn'
-    command: /bin/bash -c "python3 -m gunicorn -b 0.0.0.0:80 -w 4 DuolingoFree.wsgi --reload"
+    command: /bin/bash -c "python3 -m gunicorn -b 0.0.0.0:80 DuolingoFree.wsgi --reload"
+    environment:
+      - DEBUG=1
     volumes:
       - .:/app
     ports:
       - '80:80'
+
   puller:
     image: duolingofree_migrate
     container_name: 'puller'
-    command: /bin/bash -c "python3 /app/manage.py puller "
+    command: /bin/bash -c "python3 /app/manage.py puller"
     volumes:
       - .:/app
     depends_on:
-      - gunicorn
+      - redis
+      - celery
       - migrate
+
   redis:
     image: "redis:alpine"
     container_name: 'redis'
-    ports:
-      - "6379:6379"
+
   celery:
     image: duolingofree_migrate
     container_name: 'celery'
@@ -50,38 +56,23 @@ services:
     volumes:
       - .:/app
     depends_on:
-      - migrate
       - redis
-      - gunicorn
-      - puller
+
   flower:
     image: duolingofree_migrate
     container_name: 'flower'
-    command: /bin/bash -c "python3 -m celery --broker=redis://redis:6379/0 flower --port=5555"
-    volumes:
-      - .:/app
+    command: /bin/bash -c "python3 -m celery --broker=redis://redis:6379/0 flower --address=0.0.0.0 --port=5555"
     ports:
       - "5555:5555"
+    volumes:
+      - .:/app
     depends_on:
-      - migrate
-      - gunicorn
       - redis
-      - celery
-      - puller
+
   selenium:
     image: selenium/standalone-firefox
     container_name: 'selenium'
-    ports:
-      - "4444:4444"
-      - "5900:5900"
     environment:
       - GRID_MAX_SESSION=1
     volumes:
       - .:/app
-    depends_on:
-      - migrate
-      - flower
-      - gunicorn
-      - redis
-      - celery
-      - puller
