@@ -22,6 +22,8 @@ services:
       - MAX_UNIQUE_LINKS_PER_DAY=5
     volumes:
       - .:/app
+    networks:
+      - internal
 
   gunicorn:
     image: duolingofree_migrate
@@ -31,8 +33,16 @@ services:
       - DEBUG=1
     volumes:
       - .:/app
-    ports:
-      - '80:80'
+    expose:
+      - 80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gunicorn.rule=Host(`duo.egorovegor.ru`)"
+      - "traefik.http.middlewares.test-redirectscheme.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.test-redirectscheme.redirectscheme.permanent=true"
+    networks:
+      - internal
+      - traefik
 
   puller:
     image: duolingofree_migrate
@@ -44,10 +54,14 @@ services:
       - redis
       - celery
       - migrate
+    networks:
+      - internal
 
   redis:
     image: "redis:alpine"
     container_name: 'redis'
+    networks:
+      - internal
 
   celery:
     image: duolingofree_migrate
@@ -57,17 +71,19 @@ services:
       - .:/app
     depends_on:
       - redis
+    networks:
+      - internal
 
   flower:
     image: duolingofree_migrate
     container_name: 'flower'
     command: /bin/bash -c "python3 -m celery --broker=redis://redis:6379/0 flower --address=0.0.0.0 --port=5555"
-    ports:
-      - "5555:5555"
     volumes:
       - .:/app
     depends_on:
       - redis
+    networks:
+      - internal
 
   selenium:
     image: selenium/standalone-firefox
@@ -76,3 +92,11 @@ services:
       - GRID_MAX_SESSION=1
     volumes:
       - .:/app
+    networks:
+      - internal
+
+networks:
+  traefik:
+    external: true
+  internal:
+    external: false
