@@ -1,10 +1,10 @@
 import os
 from pathlib import Path
 
-from django.core.management.utils import get_random_secret_key
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = get_random_secret_key()
+SECRET_KEY = os.getenv(
+    "SECRET_KEY", "#t@^+k3-qq#b+olem_b2&=)bg&&t6-)+u9bdx#cats9@(#bd68"
+)
 DEBUG = os.getenv("DEBUG", 0)
 
 ALLOWED_HOSTS = ["*"]
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -87,3 +88,4 @@ CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TASK_SERIALIZER = "json"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
