@@ -11,18 +11,20 @@ services:
       && python3 manage.py makemigrations --force-color --no-input -v 3 backend
       && python3 manage.py makemigrations --force-color --no-input -v 3 frontend
       && python3 manage.py migrate --force-color -v 3
-      && python3 manage.py createsuperuser --noinput"
+      && python3 manage.py createsuperuser --noinput
+      && python3 manage.py collectstatic --noinput"
     environment:
       - DJANGO_SUPERUSER_USERNAME=admin
       - DJANGO_SUPERUSER_PASSWORD=admin
       - DJANGO_SUPERUSER_EMAIL=admin@example.com
       - DEBUG=0
+      - MAX_UNIQUE_LINKS_PER_DAY=5
     volumes:
       - .:/app
   gunicorn:
     image: duolingofree_migrate
     container_name: 'gunicorn'
-    command: /bin/bash -c "python3 -m gunicorn -b 0.0.0.0:80 -w 4 DuolingoFree.wsgi"
+    command: /bin/bash -c "python3 -m gunicorn -b 0.0.0.0:80 -w 4 DuolingoFree.wsgi --reload"
     volumes:
       - .:/app
     ports:

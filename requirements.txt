@@ -5,3 +5,4 @@ flower==1.0.0
 redis==4.1.0
 selenium==4.1.0
 gunicorn==20.1.0
+whitenoise==6.0.0
