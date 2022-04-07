@@ -1,8 +1,8 @@
 FROM python:3.9 as builder
 WORKDIR /app/
 COPY requirements.txt /app/
-RUN python3 -m pip install --no-cache-dir --upgrade pip && \
-    python3 -m pip install --no-cache-dir --user -r requirements.txt && \
+RUN python3 -m pip install --no-cache-dir --no-warn-script-location --upgrade pip && \
+    python3 -m pip install --no-cache-dir --no-warn-script-location --user -r requirements.txt && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 

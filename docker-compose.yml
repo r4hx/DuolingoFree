@@ -35,6 +35,8 @@ services:
       - .:/app
     expose:
       - 80
+    ports:
+      - 80:80
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gunicorn.rule=Host(`duo.egorovegor.ru`)"
@@ -86,7 +88,7 @@ services:
       - internal
 
   selenium:
-    image: selenium/standalone-firefox
+    image: selenium/standalone-firefox:4.1.2
     container_name: 'selenium'
     environment:
       - GRID_MAX_SESSION=1
