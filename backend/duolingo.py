@@ -1,4 +1,5 @@
 import time
+from random import randint
 
 from faker import Faker
 from selenium import webdriver
@@ -17,7 +18,15 @@ class Duolingo:
         self.account_name = self.f.name()
         self.account_age = self.f.random_int(14, 90)
         self.browser = webdriver.Remote("http://selenium:4444")
+        cookies = {
+            "name": "lang",
+            "value": "ru",
+            "domain": ".duolingo.com",
+            "path": "/",
+        }
         self.browser.implicitly_wait(10)
+        self.browser.get(self.url)
+        self.browser.add_cookie(cookies)
         self.browser.get(self.url)
         time.sleep(5)
 
@@ -26,7 +35,12 @@ class Duolingo:
         Вход в контекстный менеджер
         """
         self.select_language()
-        self.close_test()
+        self.select_how_did_find()
+        self.select_motivation()
+        self.select_daily_goal()
+        self.select_help_with_socialnet()
+        self.select_direction()
+        self.close_first_lesson()
         self.open_create_profile()
         self.set_age()
         self.set_name()
@@ -45,19 +59,94 @@ class Duolingo:
         Выбор языка для изучения
         """
         try:
-            xpath = "//*[@id='root']/div/div/span/div/div/div/ul/button[8]"
+            xpath = '//*[@id="root"]/div/div/span/div/div/div/ul/button[1]'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.click()
             time.sleep(5)
         except Exception:
             self.browser.quit()
 
-    def close_test(self) -> None:
+    def select_how_did_find(self):
         """
-        Пропуск теста на знание языка
+        Отвеачем на вопрос как узнали о Duolingo
         """
         try:
-            xpath = "//*[@id='root']/div/div/div/div[1]/div/button"
+            num = randint(1, 8)
+            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/label[{num}]'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            # click submit button
+            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            time.sleep(5)
+        except Exception:
+            self.browser.quit()
+
+    def select_motivation(self):
+        """
+        Отвеачем на вопрос о мотивации
+        """
+        try:
+            num = randint(1, 7)
+            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            # click submit button
+            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            time.sleep(5)
+        except Exception:
+            self.browser.quit()
+
+    def select_daily_goal(self):
+        """
+        Выбираем цель дня
+        """
+        try:
+            num = randint(1, 4)
+            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/label[{num}]'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            # click submit button
+            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            time.sleep(5)
+        except Exception:
+            self.browser.quit()
+
+    def select_help_with_socialnet(self):
+        """
+        Отключаем помощь уведомлениями в соц сетях
+        """
+        try:
+            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/ul/li[3]/button'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            time.sleep(5)
+        except Exception:
+            self.browser.quit()
+
+    def select_direction(self):
+        """
+        Выбираем направление
+        """
+        try:
+            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/div/button[1]'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            time.sleep(5)
+        except Exception:
+            self.browser.quit()
+
+    def close_first_lesson(self):
+        """
+        Закрываем первый урок
+        """
+        try:
+            xpath = '//*[@id="root"]/div/div/div/div/div[1]/div/div/button'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.click()
             time.sleep(5)
@@ -69,6 +158,7 @@ class Duolingo:
         Открыть форму создания профиля
         """
         try:
+            self.browser.get("https://www.duolingo.com")
             xpath = "//*[@id='root']/div/div[4]/div/div/div[1]/div[2]/button[1]"
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.click()
@@ -81,7 +171,7 @@ class Duolingo:
         Указать возраст
         """
         try:
-            xpath = "//*[@id='overlays']/div[5]/div/div/form/div[1]/div[1]/div[1]/label/div/input"
+            xpath = '//*[@id="overlays"]/div[4]/div/div/form/div[1]/div[1]/div[1]/label/div/input'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_age)
         except Exception:
@@ -92,7 +182,7 @@ class Duolingo:
         Указать имя
         """
         try:
-            xpath = "//*[@id='overlays']/div[5]/div/div/form/div[1]/div[1]/div[2]/label/div/input"
+            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[2]/label/div/input"
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_name)
         except Exception:
@@ -103,7 +193,7 @@ class Duolingo:
         Указать почту
         """
         try:
-            xpath = "//*[@id='overlays']/div[5]/div/div/form/div[1]/div[1]/div[3]/label/div/input"
+            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[3]/label/div/input"
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_email)
         except Exception:
@@ -114,7 +204,7 @@ class Duolingo:
         Указать пароль
         """
         try:
-            xpath = "//*[@id='overlays']/div[5]/div/div/form/div[1]/div[1]/div[4]/label/div/input"
+            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[4]/label/div/input"
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_password)
         except Exception:
@@ -125,7 +215,7 @@ class Duolingo:
         Подтвердить указанные данные
         """
         try:
-            xpath = "//*[@id='overlays']/div[5]/div/div/form/div[1]/button"
+            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/button"
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.click()
             print(
