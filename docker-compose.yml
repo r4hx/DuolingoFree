@@ -28,20 +28,19 @@ services:
   gunicorn:
     image: duolingofree_migrate
     container_name: 'gunicorn'
-    command: /bin/bash -c "python3 -m gunicorn -b 0.0.0.0:80 DuolingoFree.wsgi --reload"
+    command: /bin/bash -c "python3 -m gunicorn -b 0.0.0.0:8000 DuolingoFree.wsgi --reload"
     environment:
       - DEBUG=1
     volumes:
       - .:/app
-    expose:
-      - 80
     ports:
-      - 80:80
+      - 8000:8000
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.gunicorn.entrypoints=websecure"
       - "traefik.http.routers.gunicorn.rule=Host(`duo.egorovegor.ru`)"
-      - "traefik.http.middlewares.test-redirectscheme.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.test-redirectscheme.redirectscheme.permanent=true"
+      - "traefik.http.routers.gunicorm.entrypoints=websecure"
+      - "traefik.http.routers.gunicorn.tls.certresolver=myresolver"
     networks:
       - internal
       - traefik
