@@ -68,6 +68,9 @@ services:
     image: duolingofree_migrate
     container_name: 'celery'
     command: /bin/bash -c "python3 -m celery -A DuolingoFree worker -c 1 -l INFO"
+    environment:
+      - TELEGRAM_BOT_TOKEN=TOKEN_HERE
+      - TELEGRAM_CHAT_ID=-CHAT_ID_HERE
     volumes:
       - .:/app
     depends_on:
@@ -93,6 +96,8 @@ services:
       - GRID_MAX_SESSION=1
     volumes:
       - .:/app
+    ports:
+      - "5900:5900"
     networks:
       - internal
 

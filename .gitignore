@@ -8,3 +8,4 @@ dev.sh
 env.lock
 static
 backend/migrations
+docker-compose.yml
