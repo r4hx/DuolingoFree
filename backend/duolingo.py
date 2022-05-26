@@ -72,7 +72,7 @@ class Duolingo:
         """
         try:
             num = randint(1, 8)
-            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/label[{num}]'
+            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.click()
             # click submit button
