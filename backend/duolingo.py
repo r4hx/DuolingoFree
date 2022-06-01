@@ -47,6 +47,7 @@ class Duolingo:
         self.set_email()
         self.set_password()
         self.submit_create_profile()
+        # self.find_owner()
 
     def __exit__(self, type, value, traceback) -> None:
         """
@@ -159,7 +160,7 @@ class Duolingo:
         """
         try:
             self.browser.get("https://www.duolingo.com")
-            xpath = "//*[@id='root']/div/div[4]/div/div/div[1]/div[2]/button[1]"
+            xpath = "//*[@id='root']/div/div[5]/div/div/div[1]/div[2]/button[1]"
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.click()
             time.sleep(5)
@@ -222,5 +223,37 @@ class Duolingo:
                 f"{self.account_name} {self.account_age} y.o {self.account_email}: {self.account_password}"
             )
             time.sleep(10)
+        except Exception:
+            self.browser.quit()
+
+    def find_owner(self):
+        """
+        Находим собственный аккаунт
+        """
+        owner = "r4hx"
+        try:
+            # find search button
+            xpath = (
+                '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[2]/button[2]/div'
+            )
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            # find input
+            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[3]/div/input'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.send_keys(owner)
+            # find submit
+            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[3]/div/button'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            time.sleep(5)
+            # follow button
+            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[3]/ul/li/div[2]/button'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
+            # verify email overlay
+            xpath = '//*[@id="overlays"]/div[4]/div/div/div/button'
+            elem = self.browser.find_element(By.XPATH, xpath)
+            elem.click()
         except Exception:
             self.browser.quit()
