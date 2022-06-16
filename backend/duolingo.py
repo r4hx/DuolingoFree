@@ -160,7 +160,7 @@ class Duolingo:
         """
         try:
             self.browser.get("https://www.duolingo.com")
-            xpath = "//*[@id='root']/div/div[5]/div/div/div[1]/div[2]/button[1]"
+            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div/div[2]/button[1]'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.click()
             time.sleep(5)
