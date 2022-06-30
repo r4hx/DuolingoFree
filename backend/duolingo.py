@@ -4,6 +4,8 @@ from random import randint
 from faker import Faker
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Duolingo:
@@ -11,24 +13,28 @@ class Duolingo:
         """
         Инициализация
         """
+        print("init")
         self.url = url
         self.f = Faker(locale="ru_RU")
         self.account_password = self.f.password()
         self.account_email = self.f.free_email()
         self.account_name = self.f.name()
         self.account_age = self.f.random_int(14, 90)
-        self.browser = webdriver.Remote("http://selenium:4444")
+        # self.browser = webdriver.Safari()
+        self.browser = webdriver.Remote(
+            "http://selenium:4444",
+            browser_profile=self.create_profile(),
+        )
         cookies = {
             "name": "lang",
             "value": "ru",
             "domain": ".duolingo.com",
             "path": "/",
         }
-        self.browser.implicitly_wait(10)
+        # self.browser.implicitly_wait(10)
         self.browser.get(self.url)
         self.browser.add_cookie(cookies)
         self.browser.get(self.url)
-        time.sleep(5)
 
     def __enter__(self) -> None:
         """
@@ -47,23 +53,46 @@ class Duolingo:
         self.set_email()
         self.set_password()
         self.submit_create_profile()
-        # self.find_owner()
 
     def __exit__(self, type, value, traceback) -> None:
         """
         Выход из контекстного менеджера
         """
+        print("exit")
         self.browser.quit()
+
+    def create_profile(self) -> webdriver.FirefoxProfile:
+        """
+        Создание профиля для браузера
+        """
+        self.profile = webdriver.FirefoxProfile()
+        self.profile.set_preference("permissions.default.stylesheet", 2)
+        self.profile.set_preference("permissions.default.image", 2)
+        self.profile.set_preference("accessibility.force_disabled", 1)
+        self.profile.set_preference(
+            "places.history.expiration.transient_current_max_pages", 1
+        )
+        self.profile.set_preference("places.history.enabled", 0)
+        self.profile.set_preference("browser.sessionstore.max_tabs_undo", 0)
+        self.profile.set_preference("privacy.history.custom", 1)
+        self.profile.set_preference("browser.cache.disk.enable", 0)
+        self.profile.set_preference("browser.cache.memory.enable", 0)
+        self.profile.set_preference("browser.cache.offline.enable", 0)
+        self.profile.set_preference("network.http.use-cache", 0)
+        self.profile.set_preference("browser.sessionhistory.max_total_viewers", 0)
+        self.profile.set_preference("browser.sessionhistory.max_entries", 1)
+        return self.profile
 
     def select_language(self) -> None:
         """
         Выбор языка для изучения
         """
+        print("select language")
+        time.sleep(1)
         try:
+            browser = WebDriverWait(self.browser, 20)
             xpath = '//*[@id="root"]/div/div/span/div/div/div/ul/button[1]'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -71,16 +100,16 @@ class Duolingo:
         """
         Отвеачем на вопрос как узнали о Duolingo
         """
+        print("select how did find")
+        time.sleep(1)
         try:
+            browser = WebDriverWait(self.browser, 20)
             num = randint(1, 8)
             xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -88,16 +117,16 @@ class Duolingo:
         """
         Отвеачем на вопрос о мотивации
         """
+        print("select motivation")
+        time.sleep(1)
         try:
+            browser = WebDriverWait(self.browser, 20)
             num = randint(1, 7)
             xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -105,16 +134,16 @@ class Duolingo:
         """
         Выбираем цель дня
         """
+        print("select daily goal")
+        time.sleep(1)
         try:
+            browser = WebDriverWait(self.browser, 20)
             num = randint(1, 4)
             xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/label[{num}]'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -122,11 +151,12 @@ class Duolingo:
         """
         Отключаем помощь уведомлениями в соц сетях
         """
+        print("select help with socialnet")
+        time.sleep(1)
         try:
+            browser = WebDriverWait(self.browser, 20)
             xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/ul/li[3]/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -134,11 +164,12 @@ class Duolingo:
         """
         Выбираем направление
         """
+        print("select direction")
+        time.sleep(1)
         try:
+            browser = WebDriverWait(self.browser, 20)
             xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/div/button[1]'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -146,11 +177,12 @@ class Duolingo:
         """
         Закрываем первый урок
         """
+        print("close first lesson")
+        time.sleep(1)
         try:
+            browser = WebDriverWait(self.browser, 20)
             xpath = '//*[@id="root"]/div/div/div/div/div[1]/div/div/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -158,12 +190,13 @@ class Duolingo:
         """
         Открыть форму создания профиля
         """
+        print("open create profile")
+        time.sleep(1)
         try:
             self.browser.get("https://www.duolingo.com")
-            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div/div[2]/button[1]'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
+            browser = WebDriverWait(self.browser, 20)
+            xpath = '//*[@id="root"]/div/div[5]/div/div[1]/div/div[2]/button[1]'
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
@@ -171,6 +204,8 @@ class Duolingo:
         """
         Указать возраст
         """
+        print("set age")
+        time.sleep(2)
         try:
             xpath = '//*[@id="overlays"]/div[4]/div/div/form/div[1]/div[1]/div[1]/label/div/input'
             elem = self.browser.find_element(By.XPATH, xpath)
@@ -182,6 +217,7 @@ class Duolingo:
         """
         Указать имя
         """
+        print("set name")
         try:
             xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[2]/label/div/input"
             elem = self.browser.find_element(By.XPATH, xpath)
@@ -193,6 +229,7 @@ class Duolingo:
         """
         Указать почту
         """
+        print("set email")
         try:
             xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[3]/label/div/input"
             elem = self.browser.find_element(By.XPATH, xpath)
@@ -204,6 +241,7 @@ class Duolingo:
         """
         Указать пароль
         """
+        print("set password")
         try:
             xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[4]/label/div/input"
             elem = self.browser.find_element(By.XPATH, xpath)
@@ -215,14 +253,14 @@ class Duolingo:
         """
         Подтвердить указанные данные
         """
+        print("submit")
         try:
+            browser = WebDriverWait(self.browser, 20)
             xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/button"
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             print(
                 f"{self.account_name} {self.account_age} y.o {self.account_email}: {self.account_password}"
             )
-            time.sleep(10)
         except Exception:
             self.browser.quit()
 
@@ -257,3 +295,8 @@ class Duolingo:
             elem.click()
         except Exception:
             self.browser.quit()
+
+
+if __name__ == "__main__":
+    with Duolingo("https://invite.duolingo.com/BDHTZTB5CWWKSVUSMARQELX2NM"):
+        pass
