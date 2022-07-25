@@ -65,23 +65,23 @@ class Duolingo:
         """
         Создание профиля для браузера
         """
-        self.profile = webdriver.FirefoxProfile()
-        self.profile.set_preference("permissions.default.stylesheet", 2)
-        self.profile.set_preference("permissions.default.image", 2)
-        self.profile.set_preference("accessibility.force_disabled", 1)
-        self.profile.set_preference(
+        profile = webdriver.FirefoxProfile()
+        profile.set_preference("permissions.default.stylesheet", 2)
+        profile.set_preference("permissions.default.image", 2)
+        profile.set_preference("accessibility.force_disabled", 1)
+        profile.set_preference(
             "places.history.expiration.transient_current_max_pages", 1
         )
-        self.profile.set_preference("places.history.enabled", 0)
-        self.profile.set_preference("browser.sessionstore.max_tabs_undo", 0)
-        self.profile.set_preference("privacy.history.custom", 1)
-        self.profile.set_preference("browser.cache.disk.enable", 0)
-        self.profile.set_preference("browser.cache.memory.enable", 0)
-        self.profile.set_preference("browser.cache.offline.enable", 0)
-        self.profile.set_preference("network.http.use-cache", 0)
-        self.profile.set_preference("browser.sessionhistory.max_total_viewers", 0)
-        self.profile.set_preference("browser.sessionhistory.max_entries", 1)
-        return self.profile
+        profile.set_preference("places.history.enabled", 0)
+        profile.set_preference("browser.sessionstore.max_tabs_undo", 0)
+        profile.set_preference("privacy.history.custom", 1)
+        profile.set_preference("browser.cache.disk.enable", 0)
+        profile.set_preference("browser.cache.memory.enable", 0)
+        profile.set_preference("browser.cache.offline.enable", 0)
+        profile.set_preference("network.http.use-cache", 0)
+        profile.set_preference("browser.sessionhistory.max_total_viewers", 0)
+        profile.set_preference("browser.sessionhistory.max_entries", 1)
+        return profile
 
     def select_language(self) -> None:
         """
