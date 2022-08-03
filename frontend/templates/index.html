@@ -50,10 +50,10 @@
             </form>
             <div class="box">
                 <div class="columns is-mobile has-text-centered">
-                    <div class="column"><i class="fa-solid fa-play">&nbsp;&nbsp;&nbsp;{{running}}</i></div>
-                    <div class="column"><i class="fa-solid fa-hourglass">&nbsp;&nbsp;&nbsp;{{queued}}</i></div>
-                    <div class="column"><i class="fa-solid fa-skull">&nbsp;&nbsp;&nbsp;{{errored}}</i></div>
-                    <div class="column"><i class="fa-solid fa-check">&nbsp;&nbsp;&nbsp;{{finished}}</i></div>
+                    <div class="column"><i class="fa-solid fa-play" title="Running tasks" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{running}}</i></div>
+                    <div class="column"><i class="fa-solid fa-hourglass" title="Tasks in queue" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{queued}}</i></div>
+                    <div class="column"><i class="fa-solid fa-skull" title="Dropped tasks with error" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{errored}}</i></div>
+                    <div class="column"><i class="fa-solid fa-check" title="Finished tasks" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{finished}}</i></div>
                 </div>
             </div>
 
