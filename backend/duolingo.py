@@ -91,7 +91,7 @@ class Duolingo:
         time.sleep(1)
         try:
             browser = WebDriverWait(self.browser, 20)
-            xpath = '//*[@id="root"]/div/div/span/div/div/div/ul/button[1]'
+            xpath = '//*[@id="root"]/div/div/div[2]/div/div/ul/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
