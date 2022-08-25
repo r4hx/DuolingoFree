@@ -22,10 +22,14 @@ class Duolingo:
         self.account_name = self.f.name()
         self.account_age = self.f.random_int(14, 90)
         # self.browser = webdriver.Safari()
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--ignore-ssl-errors=yes")
+        options.add_argument("--ignore-certificate-errors")
         self.browser = webdriver.Remote(
             "http://selenium:4444/wd/hub",
             browser_profile=self.create_profile(),
             desired_capabilities=DesiredCapabilities.FIREFOX,
+            options=options,
         )
         cookies = {
             "name": "lang",
