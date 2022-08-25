@@ -4,6 +4,7 @@ from random import randint
 from faker import Faker
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -22,8 +23,9 @@ class Duolingo:
         self.account_age = self.f.random_int(14, 90)
         # self.browser = webdriver.Safari()
         self.browser = webdriver.Remote(
-            "http://selenium:4444",
+            "http://selenium:4444/wd/hub",
             browser_profile=self.create_profile(),
+            desired_capabilities=DesiredCapabilities.FIREFOX,
         )
         cookies = {
             "name": "lang",
