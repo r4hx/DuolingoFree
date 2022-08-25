@@ -47,19 +47,22 @@ class Duolingo:
         """
         Вход в контекстный менеджер
         """
-        self.select_language()
-        self.select_how_did_find()
-        self.select_motivation()
-        self.select_daily_goal()
-        self.select_help_with_socialnet()
-        self.select_direction()
-        self.close_first_lesson()
-        self.open_create_profile()
-        self.set_age()
-        self.set_name()
-        self.set_email()
-        self.set_password()
-        self.submit_create_profile()
+        try:
+            self.select_language()
+            self.select_how_did_find()
+            self.select_motivation()
+            self.select_daily_goal()
+            self.select_help_with_socialnet()
+            self.select_direction()
+            self.close_first_lesson()
+            self.open_create_profile()
+            self.set_age()
+            self.set_name()
+            self.set_email()
+            self.set_password()
+            self.submit_create_profile()
+        except Exception:
+            self.browser.quit()
 
     def __exit__(self, type, value, traceback) -> None:
         """
@@ -302,8 +305,3 @@ class Duolingo:
             elem.click()
         except Exception:
             self.browser.quit()
-
-
-if __name__ == "__main__":
-    with Duolingo("https://invite.duolingo.com/BDHTZTB5CWWKSVUSMARQELX2NM"):
-        pass
