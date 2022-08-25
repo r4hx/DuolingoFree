@@ -4,7 +4,6 @@ from random import randint
 from faker import Faker
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -15,13 +14,13 @@ class Duolingo:
         Инициализация
         """
         print("init")
+        time.sleep(5)
         self.url = url
         self.f = Faker(locale="ru_RU")
         self.account_password = self.f.password()
         self.account_email = self.f.free_email()
         self.account_name = self.f.name()
         self.account_age = self.f.random_int(14, 90)
-        # self.browser = webdriver.Safari()
         options = webdriver.FirefoxOptions()
         options.add_argument("--ignore-ssl-errors=yes")
         options.add_argument("--ignore-certificate-errors")
@@ -29,7 +28,6 @@ class Duolingo:
         self.browser = webdriver.Remote(
             "http://selenium:4444/wd/hub",
             browser_profile=self.create_profile(),
-            desired_capabilities=DesiredCapabilities.FIREFOX,
             options=options,
         )
         cookies = {
@@ -38,7 +36,6 @@ class Duolingo:
             "domain": ".duolingo.com",
             "path": "/",
         }
-        # self.browser.implicitly_wait(10)
         self.browser.get(self.url)
         self.browser.add_cookie(cookies)
         self.browser.get(self.url)
