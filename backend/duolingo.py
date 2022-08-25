@@ -25,6 +25,7 @@ class Duolingo:
         options = webdriver.FirefoxOptions()
         options.add_argument("--ignore-ssl-errors=yes")
         options.add_argument("--ignore-certificate-errors")
+        options.add_argument("--disable-dev-shm-usage")
         self.browser = webdriver.Remote(
             "http://selenium:4444/wd/hub",
             browser_profile=self.create_profile(),
