@@ -62,6 +62,7 @@ class Duolingo:
             self.set_password()
             self.submit_create_profile()
         except Exception:
+            print("crashed")
             self.browser.quit()
 
     def __exit__(self, type, value, traceback) -> None:
