@@ -32,7 +32,7 @@
             <form method="POST" class="post-form">{% csrf_token %}
                 <div class="field is-mobile has-addons has-addons-centered">
                     <div class="control has-icons-left">
-                        <input name="url" class="input is-medium is-link disabled" type="input" placeholder="Put the link here" required>
+                        <input name="url" class="input is-medium is-link" disabled type="input" placeholder="Put the link here" required>
                         <span class="icon is-medium is-left">
                             <i class="fa-solid fa-bookmark"></i>
                         </span>
@@ -43,7 +43,7 @@
                         {% endif %}
                     </div>
                     <div class="control">
-                        <button type="submit" class="button is-medium is-link disabled">Submit</button>
+                        <button type="submit" class="button is-medium is-link" disabled>Submit</button>
                     </div>
 
                 </div>
