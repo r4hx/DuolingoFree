@@ -13,8 +13,7 @@ class Duolingo:
         """
         Инициализация
         """
-        print("init")
-        time.sleep(5)
+        print("initialization")
         self.url = url
         self.f = Faker(locale="ru_RU")
         self.account_password = self.f.password()
@@ -66,7 +65,7 @@ class Duolingo:
         """
         Выход из контекстного менеджера
         """
-        print("exit")
+        print("normal exit")
         self.browser.quit()
 
     def create_profile(self) -> webdriver.FirefoxProfile:
@@ -194,16 +193,28 @@ class Duolingo:
         except Exception:
             self.browser.quit()
 
+    def close_popup_window(self) -> None:
+        time.sleep(2)
+        print("close popup window")
+        try:
+            browser = WebDriverWait(self.browser, 20)
+            xpath = '//*[@id="overlays"]/div[4]/div/div[1]'
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
+        except Exception:
+            pass
+
     def open_create_profile(self) -> None:
         """
         Открыть форму создания профиля
         """
-        print("open create profile")
         time.sleep(1)
+        print("open create profile")
         try:
-            self.browser.get("https://www.duolingo.com")
+            self.browser.get("https://www.duolingo.com/shop")
             browser = WebDriverWait(self.browser, 20)
-            xpath = '//*[@id="root"]/div/div[5]/div/div[1]/div/div[2]/button[1]'
+            print("click create account button")
+            time.sleep(5)
+            xpath = '//*[@id="root"]/div/div[5]/div/div[2]/div[1]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
