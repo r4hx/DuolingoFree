@@ -24,7 +24,6 @@ def create_a_new_invited_user(self, pk):
         task.state = 2
         task.running_at = timezone.now()
         task.save()
-        Telegram().send_message(message=f"task {task.pk} - RUNNING")
         with Duolingo(task.url):
             pass
         task.finished_at = timezone.now()

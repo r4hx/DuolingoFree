@@ -214,7 +214,8 @@ class Duolingo:
             browser = WebDriverWait(self.browser, 20)
             print("click create account button")
             time.sleep(5)
-            xpath = '//*[@id="root"]/div/div[5]/div/div[2]/div[1]/div/div/button'
+            # xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[1]/div/div[2]/button[1]'
+            xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[2]/div[1]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -275,7 +276,7 @@ class Duolingo:
         print("submit")
         try:
             browser = WebDriverWait(self.browser, 20)
-            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/button"
+            xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             print(
                 f"{self.account_name} {self.account_age} y.o {self.account_email}: {self.account_password}"
