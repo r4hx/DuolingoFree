@@ -112,7 +112,7 @@ class Duolingo:
         try:
             browser = WebDriverWait(self.browser, 20)
             num = randint(1, 8)
-            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
+            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{num}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
@@ -129,7 +129,7 @@ class Duolingo:
         try:
             browser = WebDriverWait(self.browser, 20)
             num = randint(1, 7)
-            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
+            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{num}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
@@ -146,7 +146,7 @@ class Duolingo:
         try:
             browser = WebDriverWait(self.browser, 20)
             num = randint(1, 4)
-            xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/label[{num}]'
+            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/label[{num}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
@@ -162,7 +162,7 @@ class Duolingo:
         time.sleep(1)
         try:
             browser = WebDriverWait(self.browser, 20)
-            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/ul/li[3]/button'
+            xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/ul/li[3]/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -175,7 +175,7 @@ class Duolingo:
         time.sleep(1)
         try:
             browser = WebDriverWait(self.browser, 20)
-            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/div/button[1]'
+            xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/div/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -198,7 +198,7 @@ class Duolingo:
         print("close popup window")
         try:
             browser = WebDriverWait(self.browser, 20)
-            xpath = '//*[@id="overlays"]/div[4]/div/div[1]'
+            xpath = '//*[@id="root"]/div[1]/div/div/div[1]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             pass
@@ -207,14 +207,17 @@ class Duolingo:
         """
         Открыть форму создания профиля
         """
-        time.sleep(1)
+        time.sleep(3)
         print("open create profile")
         try:
             self.browser.get("https://www.duolingo.com/shop")
             browser = WebDriverWait(self.browser, 20)
             print("click create account button")
             time.sleep(5)
-            xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[2]/div[1]/div/div/button'
+            xpath = (
+                '//*[@id="root"]/div[5]/div/div[2]/div/div[1]/div/div[2]/button[1]/span'
+            )
+            # xpath = '//*[@id="root"]/div[5]/div/div[1]/div/div[2]/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -226,7 +229,7 @@ class Duolingo:
         print("set age")
         time.sleep(2)
         try:
-            xpath = '//*[@id="overlays"]/div[4]/div/div/form/div[1]/div[1]/div[1]/label/div/input'
+            xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[1]/label/div/input'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_age)
         except Exception:
@@ -238,7 +241,7 @@ class Duolingo:
         """
         print("set name")
         try:
-            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[2]/label/div/input"
+            xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[2]/label/div/input'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_name)
         except Exception:
@@ -250,7 +253,7 @@ class Duolingo:
         """
         print("set email")
         try:
-            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[3]/label/div/input"
+            xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[3]/label/div/input'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_email)
         except Exception:
@@ -262,7 +265,7 @@ class Duolingo:
         """
         print("set password")
         try:
-            xpath = "//*[@id='overlays']/div[4]/div/div/form/div[1]/div[1]/div[4]/label/div/input"
+            xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[4]/label/div/input'
             elem = self.browser.find_element(By.XPATH, xpath)
             elem.send_keys(self.account_password)
         except Exception:
