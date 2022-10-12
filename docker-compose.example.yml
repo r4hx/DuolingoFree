@@ -58,6 +58,17 @@ services:
     networks:
       - internal
 
+  queue_reset:
+    image: duolingofree_migrate
+    container_name: 'queue_reset'
+    command: /bin/bash -c "python3 /app/manage.py queue_reset"
+    volumes:
+      - .:/app
+    depends_on:
+      - migrate
+    networks:
+      - internal
+
   redis:
     image: "redis:alpine"
     container_name: 'redis'
