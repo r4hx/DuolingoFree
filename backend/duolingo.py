@@ -115,7 +115,7 @@ class Duolingo:
             xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
-            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
+            xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -132,7 +132,7 @@ class Duolingo:
             xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/ul/div[{num}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
-            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
+            xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -149,7 +149,7 @@ class Duolingo:
             xpath = f'//*[@id="root"]/div/div/div/div[2]/div/div/div/label[{num}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
-            xpath = '//*[@id="root"]/div/div/div/div[2]/div/div/button'
+            xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -214,7 +214,6 @@ class Duolingo:
             browser = WebDriverWait(self.browser, 20)
             print("click create account button")
             time.sleep(5)
-            # xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[1]/div/div[2]/button[1]'
             xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[2]/div[1]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
