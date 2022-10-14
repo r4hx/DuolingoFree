@@ -9,6 +9,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Duolingo:
+
+    time_to_wait_element = 20
+    poll_frequency = 0.1
+
     def __init__(self, url) -> None:
         """
         Инициализация
@@ -95,9 +99,12 @@ class Duolingo:
         Выбор языка для изучения
         """
         print("select language")
-        time.sleep(1)
         try:
-            browser = WebDriverWait(self.browser, 20)
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="root"]/div/div/div[2]/div/div/ul/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
@@ -107,12 +114,17 @@ class Duolingo:
         """
         Отвеачем на вопрос как узнали о Duolingo
         """
-        print("select how did find")
         time.sleep(1)
+        print("select how did find")
         try:
-            browser = WebDriverWait(self.browser, 20)
-            num = randint(1, 8)
-            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{num}]'
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
+            xpath = (
+                f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{randint(1, 8)}]'
+            )
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
@@ -124,12 +136,17 @@ class Duolingo:
         """
         Отвеачем на вопрос о мотивации
         """
-        print("select motivation")
         time.sleep(1)
+        print("select motivation")
         try:
-            browser = WebDriverWait(self.browser, 20)
-            num = randint(1, 7)
-            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{num}]'
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
+            xpath = (
+                f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{randint(1, 7)}]'
+            )
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
@@ -141,12 +158,17 @@ class Duolingo:
         """
         Выбираем цель дня
         """
-        print("select daily goal")
         time.sleep(1)
+        print("select daily goal")
         try:
-            browser = WebDriverWait(self.browser, 20)
-            num = randint(1, 4)
-            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/label[{num}]'
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
+            xpath = (
+                f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/label[{randint(1, 4)}]'
+            )
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             # click submit button
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
@@ -159,9 +181,12 @@ class Duolingo:
         Отключаем помощь уведомлениями в соц сетях
         """
         print("select help with socialnet")
-        time.sleep(1)
         try:
-            browser = WebDriverWait(self.browser, 20)
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/ul/li[3]/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
@@ -172,9 +197,12 @@ class Duolingo:
         Выбираем направление
         """
         print("select direction")
-        time.sleep(1)
         try:
-            browser = WebDriverWait(self.browser, 20)
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/div/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
@@ -185,19 +213,25 @@ class Duolingo:
         Закрываем первый урок
         """
         print("close first lesson")
-        time.sleep(1)
         try:
-            browser = WebDriverWait(self.browser, 20)
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="root"]/div/div/div/div/div[1]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
 
     def close_popup_window(self) -> None:
-        time.sleep(2)
         print("close popup window")
         try:
-            browser = WebDriverWait(self.browser, 20)
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="root"]/div[1]/div/div/div[1]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
@@ -207,17 +241,18 @@ class Duolingo:
         """
         Открыть форму создания профиля
         """
-        time.sleep(3)
         print("open create profile")
         try:
             self.browser.get("https://www.duolingo.com/shop")
-            browser = WebDriverWait(self.browser, 20)
             print("click create account button")
-            time.sleep(5)
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = (
                 '//*[@id="root"]/div[5]/div/div[2]/div/div[1]/div/div[2]/button[1]/span'
             )
-            # xpath = '//*[@id="root"]/div[5]/div/div[1]/div/div[2]/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except Exception:
             self.browser.quit()
@@ -227,11 +262,17 @@ class Duolingo:
         Указать возраст
         """
         print("set age")
-        time.sleep(2)
         try:
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[1]/label/div/input'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.send_keys(self.account_age)
+            # elem = self.browser.find_element(By.XPATH, xpath)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
+                self.account_age
+            )
         except Exception:
             self.browser.quit()
 
@@ -241,9 +282,16 @@ class Duolingo:
         """
         print("set name")
         try:
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[2]/label/div/input'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.send_keys(self.account_name)
+            # elem = self.browser.find_element(By.XPATH, xpath)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
+                self.account_name
+            )
         except Exception:
             self.browser.quit()
 
@@ -253,9 +301,16 @@ class Duolingo:
         """
         print("set email")
         try:
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[3]/label/div/input'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.send_keys(self.account_email)
+            # elem = self.browser.find_element(By.XPATH, xpath)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
+                self.account_email
+            )
         except Exception:
             self.browser.quit()
 
@@ -265,9 +320,16 @@ class Duolingo:
         """
         print("set password")
         try:
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/div[1]/div[4]/label/div/input'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.send_keys(self.account_password)
+            # elem = self.browser.find_element(By.XPATH, xpath)
+            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
+                self.account_password
+            )
         except Exception:
             self.browser.quit()
 
@@ -277,43 +339,15 @@ class Duolingo:
         """
         print("submit")
         try:
-            browser = WebDriverWait(self.browser, 20)
+            browser = WebDriverWait(
+                driver=self.browser,
+                timeout=self.time_to_wait_element,
+                poll_frequency=self.poll_frequency,
+            )
             xpath = '//*[@id="overlays"]/div[2]/div/div/form/div[1]/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             print(
                 f"{self.account_name} {self.account_age} y.o {self.account_email}: {self.account_password}"
             )
-        except Exception:
-            self.browser.quit()
-
-    def find_owner(self):
-        """
-        Находим собственный аккаунт
-        """
-        owner = "r4hx"
-        try:
-            # find search button
-            xpath = (
-                '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[2]/button[2]/div'
-            )
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            # find input
-            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[3]/div/input'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.send_keys(owner)
-            # find submit
-            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[3]/div/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            time.sleep(5)
-            # follow button
-            xpath = '//*[@id="root"]/div/div[5]/div/div/div[1]/div[4]/div[3]/ul/li/div[2]/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
-            # verify email overlay
-            xpath = '//*[@id="overlays"]/div[4]/div/div/div/button'
-            elem = self.browser.find_element(By.XPATH, xpath)
-            elem.click()
         except Exception:
             self.browser.quit()

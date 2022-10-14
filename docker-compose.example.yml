@@ -105,8 +105,8 @@ services:
     container_name: 'selenium'
     environment:
       - GRID_MAX_SESSION=1
-      - GRID_TIMEOUT=180
-      - GRID_BROWSER_TIMEOUT=180
+      - GRID_TIMEOUT=120
+      - GRID_BROWSER_TIMEOUT=120
     volumes:
       - .:/app
     ports:
