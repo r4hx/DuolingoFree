@@ -16,7 +16,9 @@ app.control.time_limit(
 @app.task(
     bind=True,
     autoretry_for=(Exception,),
-    retry_kwargs={"max_retries": 2, "countdown": 10},
+    retry_kwargs={
+        "max_retries": 10,
+    },
 )
 def create_a_new_invited_user(self, pk):
     task = Task.objects.get(pk=pk)
