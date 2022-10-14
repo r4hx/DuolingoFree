@@ -10,7 +10,7 @@ from frontend.forms import TaskForm
 
 
 def index(request):
-    max_unique_links_per_day = os.getenv("MAX_UNIQUE_LINKS_PER_DAY", 100)
+    max_unique_links_per_day = os.getenv("MAX_UNIQUE_LINKS_PER_DAY", 50)
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -39,7 +39,7 @@ def index(request):
         running = Task.objects.filter(state=2).count()
         finished = Task.objects.filter(state=3).count()
         errored = Task.objects.filter(state=4).count()
-        start_after = (running + queued) * 2
+        start_after = (running + queued) * 1
         last_log = Task.objects.all().order_by("-id")[0:4]
         context = {
             "form": form,
