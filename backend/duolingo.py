@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 class Duolingo:
 
     time_to_wait_element = 20
-    poll_frequency = 0.1
+    poll_frequency = 0.5
 
     def __init__(self, url) -> None:
         """
