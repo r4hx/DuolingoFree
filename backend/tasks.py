@@ -1,3 +1,5 @@
+import logging
+
 from django.utils import timezone
 from DuolingoFree.celery import app
 
@@ -5,8 +7,13 @@ from backend.duolingo import Duolingo
 from backend.models import Task
 from backend.telegram import Telegram
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
 
-@app.task(bind=True)
+
+@app.task(bind=True, ignore_result=False)
 def create_a_new_invited_user(self, pk):
     task = Task.objects.get(pk=pk)
     try:

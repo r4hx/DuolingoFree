@@ -48,7 +48,7 @@ class Duolingo:
         self.browser.add_cookie(cookies)
         self.browser.get(self.url)
 
-    def __enter__(self) -> None:
+    def __enter__(self) -> str:
         """
         Вход в контекстный менеджер
         """
@@ -69,14 +69,14 @@ class Duolingo:
         except Exception:
             logging.info("Задача аварийно остановилась")
             self.browser.quit()
+        return self.task_result
 
-    def __exit__(self, type, value, traceback) -> str:
+    def __exit__(self, type, value, traceback) -> None:
         """
         Выход из контекстного менеджера
         """
         logging.info("Задача выполнена успешно")
         self.browser.quit()
-        return self.task_result
 
     def create_profile(self) -> webdriver.FirefoxProfile:
         """
