@@ -1,4 +1,3 @@
-from celery import states
 from django.utils import timezone
 from DuolingoFree.celery import app
 
@@ -38,4 +37,4 @@ def create_a_new_invited_user(self, pk):
         task.state = 4
         task.save()
         Telegram().send_message(message=f"task {task.pk} - ERROR")
-        self.update_state(state=states.FAILURE, meta={"description": "crashed"})
+        self.retry(exc=e)
