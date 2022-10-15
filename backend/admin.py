@@ -15,10 +15,6 @@ class TaskAdmin(admin.ModelAdmin):
     list_display_links = [
         "id",
         "url",
-        "state",
-        "created_at",
-        "running_at",
-        "finished_at",
     ]
     search_fields = [
         "id",
