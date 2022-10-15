@@ -6,7 +6,7 @@ from backend.models import Task
 from backend.telegram import Telegram
 
 
-@app.task(bind=True, time_limit=60)
+@app.task(bind=True)
 def create_a_new_invited_user(self, pk):
     task = Task.objects.get(pk=pk)
     try:
