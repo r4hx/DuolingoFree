@@ -13,12 +13,12 @@ def create_a_new_invited_user(self, pk):
         task.state = 2
         task.running_at = timezone.now()
         task.save()
-        with Duolingo(task.url):
-            pass
-        task.finished_at = timezone.now()
-        task.state = 3
-        task.save()
-        Telegram().send_message(message=f"Task #{task.pk} - FINISHED")
+        with Duolingo(task.url) as e:
+            task.finished_at = timezone.now()
+            task.state = 3
+            task.save()
+            Telegram().send_message(message=f"Task #{task.pk} - FINISHED")
+            return e
     except Exception as e:
         print(e)
         task.state = 4
