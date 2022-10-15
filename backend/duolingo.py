@@ -25,6 +25,7 @@ class Duolingo:
         logging.info("Инициализируем сессию Selenium")
         self.url = url
         self.f = Faker(locale="ru_RU")
+        self.task_result = ""
         self.account_password = self.f.password()
         self.account_email = self.f.free_email()
         self.account_name = self.f.name()
@@ -69,12 +70,13 @@ class Duolingo:
             logging.info("Задача аварийно остановилась")
             self.browser.quit()
 
-    def __exit__(self, type, value, traceback) -> None:
+    def __exit__(self, type, value, traceback) -> str:
         """
         Выход из контекстного менеджера
         """
         logging.info("Задача выполнена успешно")
         self.browser.quit()
+        return self.task_result
 
     def create_profile(self) -> webdriver.FirefoxProfile:
         """
@@ -340,6 +342,9 @@ class Duolingo:
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             logging.info(
                 f"Создан пользователь: {self.account_name} {self.account_age}y.o {self.account_email}:{self.account_password}"
+            )
+            self.task_result = (
+                f"{self.account_name} {self.account_email}:{self.account_password}"
             )
         except Exception:
             logging.info("Возникла ошибка при подтверждении создания пользователя")
