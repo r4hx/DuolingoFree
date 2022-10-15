@@ -7,7 +7,7 @@ from backend.telegram import Telegram
 
 
 @app.task(bind=True, ignore_result=False)
-def create_a_new_invited_user(self, pk: int) -> None | str:
+def create_a_new_invited_user(self, pk: int):
     """
     Создает нового пользователя из данных Task
     """
