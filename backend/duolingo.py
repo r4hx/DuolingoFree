@@ -18,7 +18,7 @@ class Duolingo:
     time_to_wait_element = 20
     poll_frequency = 0.5
 
-    def __init__(self, url) -> None:
+    def __init__(self, url: str) -> None:
         """
         Инициализация
         """
@@ -118,7 +118,7 @@ class Duolingo:
             logging.info("Возникла ошибка при выборе языка для изучения")
             self.browser.quit()
 
-    def select_how_did_find(self):
+    def select_how_did_find(self) -> None:
         """
         Отвеачем на вопрос как узнали о Duolingo
         """
@@ -140,7 +140,7 @@ class Duolingo:
             )
             self.browser.quit()
 
-    def select_motivation(self):
+    def select_motivation(self) -> None:
         """
         Отвеачем на вопрос о мотивации
         """
@@ -160,7 +160,7 @@ class Duolingo:
             logging.info("Возникла ошибка при ответе на вопрос о мотивации")
             self.browser.quit()
 
-    def select_daily_goal(self):
+    def select_daily_goal(self) -> None:
         """
         Выбираем цель дня
         """
@@ -180,7 +180,7 @@ class Duolingo:
             logging.info("Возникла ошибка при выборе цели дня")
             self.browser.quit()
 
-    def select_help_with_socialnet(self):
+    def select_help_with_socialnet(self) -> None:
         """
         Отключаем помощь уведомлениями в соц сетях
         """
@@ -197,7 +197,7 @@ class Duolingo:
             logging.info("Возникла ошибка при отказе уведомлений в социальных сетях")
             self.browser.quit()
 
-    def select_direction(self):
+    def select_direction(self) -> None:
         """
         Выбираем направление
         """
@@ -214,7 +214,7 @@ class Duolingo:
             logging.info("Возникла ошибка при выборе направления")
             self.browser.quit()
 
-    def close_first_lesson(self):
+    def close_first_lesson(self) -> None:
         """
         Закрываем первый урок
         """

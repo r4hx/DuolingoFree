@@ -19,7 +19,6 @@ services:
       - DJANGO_SUPERUSER_PASSWORD=admin
       - DJANGO_SUPERUSER_EMAIL=admin@example.com
       - DEBUG=1
-      - MAX_UNIQUE_LINKS_PER_DAY=5
     volumes:
       - .:/app
     networks:

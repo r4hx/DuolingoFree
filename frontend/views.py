@@ -40,7 +40,6 @@ def index(request):
         finished = Task.objects.filter(state=3).count()
         errored = Task.objects.filter(state=4).count()
         start_after = (running + queued) * 1
-        last_log = Task.objects.all().order_by("-id")[0:4]
         context = {
             "form": form,
             "queued": queued,
@@ -48,6 +47,5 @@ def index(request):
             "finished": finished,
             "errored": errored,
             "start_after": start_after,
-            "last_log": last_log,
         }
         return render(request, "index.html", context)

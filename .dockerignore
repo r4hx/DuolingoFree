@@ -9,3 +9,4 @@ env.lock
 static
 docker-compose.yml
 Dockerfile
+flower.db

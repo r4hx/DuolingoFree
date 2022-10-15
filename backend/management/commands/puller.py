@@ -6,7 +6,7 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    help = "Проверяет базу на наличие новых задач"
+    help = "Проверяет базу на наличие новых задач и отправляет их на исполнение"
 
     def handle(self, *args, **options):
         while True:

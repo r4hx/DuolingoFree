@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    help = "Перезагружает задачи из очереди"
+    help = "Перезагрузка задач в очереди"
 
     def handle(self, *args, **options):
         tasks = Task.objects.filter(state=1)
