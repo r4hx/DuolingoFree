@@ -9,3 +9,4 @@ env.lock
 static
 backend/migrations
 docker-compose.yml
+flower.db
