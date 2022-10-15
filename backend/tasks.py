@@ -13,13 +13,7 @@ app.control.time_limit(
 )
 
 
-@app.task(
-    bind=True,
-    autoretry_for=(Exception,),
-    retry_kwargs={
-        "max_retries": 5,
-    },
-)
+@app.task(bind=True)
 def create_a_new_invited_user(self, pk):
     task = Task.objects.get(pk=pk)
     try:
@@ -37,4 +31,4 @@ def create_a_new_invited_user(self, pk):
         task.state = 4
         task.save()
         Telegram().send_message(message=f"task {task.pk} - ERROR")
-        self.retry(exc=e)
+        raise self.retry(exc=e, max_retries=5)
