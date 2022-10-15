@@ -1,5 +1,3 @@
-import time
-
 from backend.models import Task
 from django.core.management.base import BaseCommand
 
