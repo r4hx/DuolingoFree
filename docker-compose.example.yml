@@ -90,11 +90,20 @@ services:
       - internal
 
   flower:
-    image: duolingofree_migrate
-    container_name: 'flower'
-    command: /bin/bash -c "python3 -m celery --broker=redis://redis:6379/0 flower --address=0.0.0.0 --port=5555"
+    image: mher/flower
+    container_name: flower
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - FLOWER_BASIC_AUTH=duolingo:free
+      - FLOWER_PORT=5555
+      - FLOWER_PERSISTENT=True
+      - FLOWER_STATE_SAVE_INTERVAL=10000
+      - FLOWER_DB=/etc/db/flower.db
+    ports:
+      - "5555:5555"
     volumes:
       - .:/app
+      - .:/etc/db/
     depends_on:
       - redis
     networks:
