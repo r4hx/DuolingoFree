@@ -1,6 +1,5 @@
 import logging
 import time
-from random import randint
 
 from faker import Faker
 from selenium import webdriver
@@ -129,9 +128,7 @@ class Duolingo:
                 timeout=self.time_to_wait_element,
                 poll_frequency=self.poll_frequency,
             )
-            xpath = (
-                f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{randint(1, 8)}]'
-            )
+            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{self.f.random_int(1, 8)}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
@@ -153,9 +150,7 @@ class Duolingo:
                 timeout=self.time_to_wait_element,
                 poll_frequency=self.poll_frequency,
             )
-            xpath = (
-                f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{randint(1, 7)}]'
-            )
+            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{self.f.random_int(1, 7)}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
@@ -175,9 +170,7 @@ class Duolingo:
                 timeout=self.time_to_wait_element,
                 poll_frequency=self.poll_frequency,
             )
-            xpath = (
-                f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/label[{randint(1, 4)}]'
-            )
+            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/label[{self.f.random_int(1, 4)}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
@@ -235,20 +228,6 @@ class Duolingo:
         except Exception:
             logging.info("Возникла ошибка при закрытие первого урока")
             self.browser.quit()
-
-    def close_popup_window(self) -> None:
-        logging.info("Закрываем всплывающие окно")
-        try:
-            browser = WebDriverWait(
-                driver=self.browser,
-                timeout=self.time_to_wait_element,
-                poll_frequency=self.poll_frequency,
-            )
-            xpath = '//*[@id="root"]/div[1]/div/div/div[1]/div/div/button'
-            browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
-            logging.info("Возникла ошибка при закрытие всплывающего окна")
-            pass
 
     def open_create_profile(self) -> None:
         """
