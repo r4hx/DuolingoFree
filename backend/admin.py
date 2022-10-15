@@ -28,6 +28,9 @@ class TaskAdmin(admin.ModelAdmin):
         "running_at",
         "finished_at",
     ]
+    list_editable = [
+        "state",
+    ]
     ordering = ["-id"]
 
 
