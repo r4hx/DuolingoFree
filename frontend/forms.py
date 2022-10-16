@@ -5,8 +5,8 @@ from django import forms
 
 class TaskForm(forms.ModelForm):
     url = forms.URLField(
-        min_length=27,
-        max_length=65,
+        min_length=45,
+        max_length=70,
         validators=[validate_url],
         required=True,
     )
