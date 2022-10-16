@@ -30,12 +30,5 @@ def create_a_new_invited_user(self, pk: int):
         task.state = 4
         task.save()
         Telegram().send_message(message=f"Task #{task.pk} - ERROR")
-        self.update_state(
-            state=states.FAILURE,
-            meta={
-                "exc_type": type(e).__name__,
-                "exc_message": traceback.format_exc().split("\n"),
-                "custom": "...",
-            },
-        )
+        raise e
     return result
