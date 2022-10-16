@@ -1,6 +1,3 @@
-import traceback
-
-from celery import states
 from django.utils import timezone
 from DuolingoFree.celery import app
 
