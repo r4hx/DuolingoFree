@@ -1,3 +1,6 @@
+import traceback
+
+from celery import states
 from django.utils import timezone
 from DuolingoFree.celery import app
 
@@ -27,5 +30,12 @@ def create_a_new_invited_user(self, pk: int):
         task.state = 4
         task.save()
         Telegram().send_message(message=f"Task #{task.pk} - ERROR")
-        raise self.retry(exc=e, max_retries=5)
+        self.update_state(
+            state=states.FAILURE,
+            meta={
+                "exc_type": type(e).__name__,
+                "exc_message": traceback.format_exc().split("\n"),
+                "custom": "...",
+            },
+        )
     return result
