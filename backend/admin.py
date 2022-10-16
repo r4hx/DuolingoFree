@@ -31,6 +31,13 @@ class TaskAdmin(admin.ModelAdmin):
     list_editable = [
         "state",
     ]
+    date_hierarchy = "created_at"
+    list_filter = (
+        "state",
+        "created_at",
+        "running_at",
+        "finished_at",
+    )
     ordering = ["-id"]
 
 
