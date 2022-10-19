@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Duolingo Super (aka Plus) Free 2022{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "SITE_TITLE" %}{% endblock %}
 {% block content %}
 <section class="hero is-halfheight">
 <div class="container">
@@ -14,8 +16,8 @@
 })</script>
 
 </div>
-    <h1 class="title has-text-centered">Welcome to Duolingo Super (aka Plus) Free!</h1>
-    <h2 class="subtitle has-text-centered">Get 7 days free, send your <a target="blank" href="https://support.duolingo.com/hc/en-us/articles/4404225309581-How-does-the-referral-program-work-">invition link</a> below</h2>
+    <h1 class="title has-text-centered">{% trans "SITE_WELCOME_TEXT_TITLE" %}</h1>
+    <h2 class="subtitle has-text-centered"><a target="_blank" href="{% trans "DUOLINGO_PARTNERS_URL" %}">{% trans "SITE_WELCOME_TEXT_DESCRIPTION" %}</a></h2>
     <div class="columns is-multiline">
         <div class="column">
             <div class="field">
@@ -32,38 +34,38 @@
             <form method="POST" class="post-form">{% csrf_token %}
                 <div class="field is-mobile has-addons has-addons-centered">
                     <div class="control has-icons-left">
-                        <input name="url" class="input is-medium is-link" type="input" placeholder="Put the link here" required>
+                        <input name="url" class="input is-medium is-link" type="input" placeholder="{% trans "SITE_SUBMIT_BUTTON_PLACEHOLDER" %}" required>
                         <span class="icon is-medium is-left">
                             <i class="fa-solid fa-bookmark"></i>
                         </span>
                         {% if start_after == 0 %}
-                            <p class="help">Your task will be launched instantly</p>
+                            <p class="help">{% trans "SITE_FORM_HELP_TEXT_IDLE" %}</p>
                         {% else %}
-                            <p class="help">Your task will run after {{start_after}} minute(s)</p>
+                            <p class="help">{% blocktrans with count=start_after %}{{ count }} SITE_FORM_HELP_TEXT_BUSY{% endblocktrans %}</p>
                         {% endif %}
                     </div>
                     <div class="control">
-                        <button type="submit" class="button is-medium is-link" >Submit</button>
+                        <button type="submit" class="button is-medium is-link" >{% trans "SITE_SUBMIT_BUTTON_TEXT" %}</button>
                     </div>
 
                 </div>
             </form>
             <div class="box">
                 <div class="columns is-mobile has-text-centered">
-                    <div class="column"><i class="fa-solid fa-play" title="Running tasks" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{running}}</i></div>
-                    <div class="column"><i class="fa-solid fa-hourglass" title="Tasks in queue" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{queued}}</i></div>
-                    <div class="column"><i class="fa-solid fa-skull" title="Dropped tasks with error" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{errored}}</i></div>
-                    <div class="column"><i class="fa-solid fa-check" title="Finished tasks" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{finished}}</i></div>
+                    <div class="column"><i class="fa-solid fa-play" title="{% trans "SITE_ICON_RUNNING_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{running}}</i></div>
+                    <div class="column"><i class="fa-solid fa-hourglass" title="{% trans "SITE_ICON_QUEUED_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{queued}}</i></div>
+                    <div class="column"><i class="fa-solid fa-skull" title="{% trans "SITE_ICON_ERRORED_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{errored}}</i></div>
+                    <div class="column"><i class="fa-solid fa-check" title="{% trans "SITE_ICON_FINISHING_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{finished}}</i></div>
                 </div>
             </div>
 
             <div class="box">
-                <div class="field">* You can send the link more than once.</div>
-                <div class="field">* No login or password required.</div>
-                <div class="field">* Average task time 1 minute.</div>
-                <div class="field">* Only one slot for running.</div>
-                <div class="field">* Just add new task if current is break.</div>
-                <div class="field">* Any questions? Ask in <a href="https://t.me/duoplusfree" target="blank">the chat.</a></div>
+                <div class="field">* {% trans "SITE_RULES_LINE_ONE" %}</div>
+                <div class="field">* {% trans "SITE_RULES_LINE_TWO" %}</div>
+                <div class="field">* {% trans "SITE_RULES_LINE_THREE" %}</div>
+                <div class="field">* {% trans "SITE_RULES_LINE_FOR" %}</div>
+                <div class="field">* {% trans "SITE_RULES_LINE_FIVE" %}</div>
+                <div class="field">* {% trans "SITE_RULES_LINE_SIX" %}</div>
             </div>
 
         </div>

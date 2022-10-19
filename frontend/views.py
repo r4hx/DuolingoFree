@@ -5,12 +5,13 @@ from backend.models import Task
 from django.contrib import messages
 from django.shortcuts import HttpResponseRedirect, render
 from django.utils import timezone
+from django.utils.translation import gettext as _
 
 from frontend.forms import TaskForm
 
 
 def index(request):
-    max_unique_links_per_day = os.getenv("MAX_UNIQUE_LINKS_PER_DAY", 50)
+    max_unique_links_per_day = os.getenv("MAX_UNIQUE_LINKS_PER_DAY", 5)
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -22,16 +23,13 @@ def index(request):
                 ],
             ).count()
             if links_of_day >= max_unique_links_per_day:
-                messages.info(
-                    request,
-                    f"You sent more than {max_unique_links_per_day} links for the day",
-                )
+                messages.info(request, _("LINK_SEND_LIMIT"))
                 return HttpResponseRedirect("/")
             form.save()
-            messages.success(request, "Link sending to queue")
+            messages.success(request, _("LINK_SENDING_TO_QUEUE"))
             return HttpResponseRedirect("/")
         else:
-            messages.error(request, "Your link is bad, check it")
+            messages.error(request, _("LINK_BAD"))
             return HttpResponseRedirect("/")
     elif request.method == "GET":
         form = TaskForm

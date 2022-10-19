@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from django.utils.translation import gettext_lazy as _
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv(
     "SECRET_KEY", "#t@^+k3-qq#b+olem_b2&=)bg&&t6-)+u9bdx#cats9@(#bd68"
@@ -25,6 +27,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -75,7 +78,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
+LANGUAGES = (
+    ("ru", _("Russian")),
+    ("en", _("English")),
+)
+LANGUAGE_COOKIE_NAME = "language"
+USE_I18N = True
+USE_TZ = True
+LOCALE_PATHS = ("locale",)
 TIME_ZONE = "Europe/Moscow"
 STATIC_URL = "static/"
 STATIC_ROOT = "static/"

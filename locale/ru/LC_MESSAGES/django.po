@@ -1,0 +1,178 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-19 05:11+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: DuolingoFree/settings.py:83
+msgid "Russian"
+msgstr "Русский"
+
+#: DuolingoFree/settings.py:84
+msgid "English"
+msgstr "Английский"
+
+#: backend/models.py:18
+msgid "MODEL_URL_VERBOSE_NAME"
+msgstr "Ссылка"
+
+#: backend/models.py:19
+msgid "MODEL_URL_HELP_TEXT"
+msgstr "Введите ссылку-приглашение"
+
+#: backend/models.py:24
+msgid "MODEL_STATE_VERBOSE_NAME"
+msgstr "Состояние"
+
+#: backend/models.py:25
+msgid "MODEL_STATE_HELP_TEXT"
+msgstr "Текущее состояние задачи"
+
+#: backend/models.py:29
+msgid "MODEL_CREATED_AT_VERBOSE_NAME"
+msgstr "Дата создания"
+
+#: backend/models.py:30
+msgid "MODEL_CREATED_AT_HELP_TEXT"
+msgstr "Дата создания задачи"
+
+#: backend/models.py:35
+msgid "MODEL_RUNNING_AT_VERBOSE_NAME"
+msgstr "Дата запуска"
+
+#: backend/models.py:36
+msgid "MODEL_RUNNING_AT_HELP_TEXT"
+msgstr "Дата запуска задачи"
+
+#: backend/models.py:41
+msgid "MODEL_FINISHED_AT_VERBOSE_NAME"
+msgstr "Дата завершения"
+
+#: backend/models.py:42
+msgid "MODEL_FINISHED_AT_HELP_TEXT"
+msgstr "Дата завершения задачи"
+
+#: frontend/templates/base.html:10
+msgid "SITE_DESCRIPTION"
+msgstr ""
+"Онлайн приложение для получения бесплатной подписки Duolingo Super. Не "
+"требует логина и пароля от вашей учетной записи."
+
+#: frontend/templates/base.html:44
+msgid "SITE_LINK_CHAT"
+msgstr "Чат"
+
+#: frontend/templates/base.html:50
+msgid "SITE_LINK_DONATE"
+msgstr "Поддержать"
+
+#: frontend/templates/base.html:56
+msgid "SITE_LINK_BLOG"
+msgstr "Блог"
+
+#: frontend/templates/base.html:67
+msgid "AUTHOR"
+msgstr "Егоров Егор"
+
+#: frontend/templates/index.html:4
+msgid "SITE_TITLE"
+msgstr "Duolingo Super бесплатно"
+
+#: frontend/templates/index.html:19
+msgid "SITE_WELCOME_TEXT_TITLE"
+msgstr "Бесплатная подписка Duolingo Super!"
+
+#: frontend/templates/index.html:20
+msgid "DUOLINGO_PARTNERS_URL"
+msgstr ""
+"https://support.duolingo.com/hc/ru/articles/4404225309581-Как-работает-"
+"реферальная-программа-"
+
+#: frontend/templates/index.html:20
+msgid "SITE_WELCOME_TEXT_DESCRIPTION"
+msgstr "Получите 7 дней бесплатно по ссылке-приглашению"
+
+#: frontend/templates/index.html:37
+msgid "SITE_SUBMIT_BUTTON_PLACEHOLDER"
+msgstr "Скопируй ссылку сюда"
+
+#: frontend/templates/index.html:42
+msgid "SITE_FORM_HELP_TEXT_IDLE"
+msgstr "Задача будет запущена сразу"
+
+#: frontend/templates/index.html:44
+#, python-format
+msgid "%(count)s SITE_FORM_HELP_TEXT_BUSY"
+msgstr "Задача будет запущена через %(count)s минут(ы)"
+
+#: frontend/templates/index.html:48
+msgid "SITE_SUBMIT_BUTTON_TEXT"
+msgstr "Отправить"
+
+#: frontend/templates/index.html:55
+msgid "SITE_ICON_RUNNING_TASKS_TITLE"
+msgstr "Запущенные задачи"
+
+#: frontend/templates/index.html:56
+msgid "SITE_ICON_QUEUED_TASKS_TITLE"
+msgstr "Задачи в очереди на выполнение"
+
+#: frontend/templates/index.html:57
+msgid "SITE_ICON_ERRORED_TASKS_TITLE"
+msgstr "Упавшие задачи с ошибкой"
+
+#: frontend/templates/index.html:58
+msgid "SITE_ICON_FINISHING_TASKS_TITLE"
+msgstr "Завершенные задачи"
+
+#: frontend/templates/index.html:63
+msgid "SITE_RULES_LINE_ONE"
+msgstr "Вы можете отправить ссылку более одного раза."
+
+#: frontend/templates/index.html:64
+msgid "SITE_RULES_LINE_TWO"
+msgstr "Не требуется логин или пароль."
+
+#: frontend/templates/index.html:65
+msgid "SITE_RULES_LINE_THREE"
+msgstr "Среднее время выполнение задачи 1 минута."
+
+#: frontend/templates/index.html:66
+msgid "SITE_RULES_LINE_FOR"
+msgstr "Если случилась ошибка просто добавьте ссылку еще раз."
+
+#: frontend/templates/index.html:67
+msgid "SITE_RULES_LINE_FIVE"
+msgstr "Одновременно работает только одна задача."
+
+#: frontend/templates/index.html:68
+msgid "SITE_RULES_LINE_SIX"
+msgstr "Остались вопросы? Пишите в чат."
+
+#: frontend/views.py:26
+msgid "LINK_SEND_LIMIT"
+msgstr "Вы достигли дневного ограничения на отправку ссылок"
+
+#: frontend/views.py:29
+msgid "LINK_SENDING_TO_QUEUE"
+msgstr "Ссылка отправлена в очередь"
+
+#: frontend/views.py:32
+msgid "LINK_BAD"
+msgstr "Вы прислали неверную ссылку"

@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-19 05:11+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: DuolingoFree/settings.py:83
+msgid "Russian"
+msgstr "Russian"
+
+#: DuolingoFree/settings.py:84
+msgid "English"
+msgstr "English"
+
+#: backend/models.py:18
+msgid "MODEL_URL_VERBOSE_NAME"
+msgstr "Link"
+
+#: backend/models.py:19
+msgid "MODEL_URL_HELP_TEXT"
+msgstr "Enter your invited-link"
+
+#: backend/models.py:24
+msgid "MODEL_STATE_VERBOSE_NAME"
+msgstr "State"
+
+#: backend/models.py:25
+msgid "MODEL_STATE_HELP_TEXT"
+msgstr "Current task state"
+
+#: backend/models.py:29
+msgid "MODEL_CREATED_AT_VERBOSE_NAME"
+msgstr "Created at"
+
+#: backend/models.py:30
+msgid "MODEL_CREATED_AT_HELP_TEXT"
+msgstr "Created at date"
+
+#: backend/models.py:35
+msgid "MODEL_RUNNING_AT_VERBOSE_NAME"
+msgstr "Running at"
+
+#: backend/models.py:36
+msgid "MODEL_RUNNING_AT_HELP_TEXT"
+msgstr "Running at date"
+
+#: backend/models.py:41
+msgid "MODEL_FINISHED_AT_VERBOSE_NAME"
+msgstr "Finished at"
+
+#: backend/models.py:42
+msgid "MODEL_FINISHED_AT_HELP_TEXT"
+msgstr "Finished at date"
+
+#: frontend/templates/base.html:10
+msgid "SITE_DESCRIPTION"
+msgstr ""
+"Online application for a free Duolingo Super subscription. Does not require "
+"a username and password for your account."
+
+#: frontend/templates/base.html:44
+msgid "SITE_LINK_CHAT"
+msgstr "Chat"
+
+#: frontend/templates/base.html:50
+msgid "SITE_LINK_DONATE"
+msgstr "Donate"
+
+#: frontend/templates/base.html:56
+msgid "SITE_LINK_BLOG"
+msgstr "Blog"
+
+#: frontend/templates/base.html:67
+msgid "AUTHOR"
+msgstr "Egorov Egor"
+
+#: frontend/templates/index.html:4
+msgid "SITE_TITLE"
+msgstr "Duolingo Super Free"
+
+#: frontend/templates/index.html:19
+msgid "SITE_WELCOME_TEXT_TITLE"
+msgstr "Welcome to Duolingo Super Free!"
+
+#: frontend/templates/index.html:20
+msgid "DUOLINGO_PARTNERS_URL"
+msgstr ""
+"https://support.duolingo.com/hc/en-us/articles/4404225309581-How-does-the-"
+"referral-program-work-"
+
+#: frontend/templates/index.html:20
+msgid "SITE_WELCOME_TEXT_DESCRIPTION"
+msgstr "Get 7 days free, send your invition link below"
+
+#: frontend/templates/index.html:37
+msgid "SITE_SUBMIT_BUTTON_PLACEHOLDER"
+msgstr "Put the link here"
+
+#: frontend/templates/index.html:42
+msgid "SITE_FORM_HELP_TEXT_IDLE"
+msgstr "Your task will be launched instantly"
+
+#: frontend/templates/index.html:44
+#, python-format
+msgid "%(count)s SITE_FORM_HELP_TEXT_BUSY"
+msgstr "Your task will run after %(count)s minute(s)"
+
+#: frontend/templates/index.html:48
+msgid "SITE_SUBMIT_BUTTON_TEXT"
+msgstr "Submit"
+
+#: frontend/templates/index.html:55
+msgid "SITE_ICON_RUNNING_TASKS_TITLE"
+msgstr "Running tasks"
+
+#: frontend/templates/index.html:56
+msgid "SITE_ICON_QUEUED_TASKS_TITLE"
+msgstr "Tasks in queue"
+
+#: frontend/templates/index.html:57
+msgid "SITE_ICON_ERRORED_TASKS_TITLE"
+msgstr "Dropped tasks with error"
+
+#: frontend/templates/index.html:58
+msgid "SITE_ICON_FINISHING_TASKS_TITLE"
+msgstr "Finished tasks"
+
+#: frontend/templates/index.html:63
+msgid "SITE_RULES_LINE_ONE"
+msgstr "You can send the link more than once."
+
+#: frontend/templates/index.html:64
+msgid "SITE_RULES_LINE_TWO"
+msgstr "No login or password required."
+
+#: frontend/templates/index.html:65
+msgid "SITE_RULES_LINE_THREE"
+msgstr "Average task time 1 minute."
+
+#: frontend/templates/index.html:66
+msgid "SITE_RULES_LINE_FOR"
+msgstr "Only one slot for running."
+
+#: frontend/templates/index.html:67
+msgid "SITE_RULES_LINE_FIVE"
+msgstr "Just add new task if current is break."
+
+#: frontend/templates/index.html:68
+msgid "SITE_RULES_LINE_SIX"
+msgstr "Any questions? Ask in the chat."
+
+#: frontend/views.py:26
+msgid "LINK_SEND_LIMIT"
+msgstr "You sent max links for the day"
+
+#: frontend/views.py:29
+msgid "LINK_SENDING_TO_QUEUE"
+msgstr "Link sending to queue"
+
+#: frontend/views.py:32
+msgid "LINK_BAD"
+msgstr "Your link is bad, please check it"

@@ -30,6 +30,7 @@ services:
     command: /bin/bash -c "python3 -m gunicorn -b 0.0.0.0:8000 DuolingoFree.wsgi --reload"
     environment:
       - DEBUG=1
+      - MAX_UNIQUE_LINKS_PER_DAY=10
     volumes:
       - .:/app
     ports:
