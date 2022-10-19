@@ -17,7 +17,7 @@
 </div>
     <h1 class="title has-text-centered">{% trans "SITE_WELCOME_TEXT_TITLE" %}</h1>
     <h2 class="subtitle has-text-centered"><a target="_blank" href="{% trans "DUOLINGO_PARTNERS_URL" %}">{% trans "SITE_WELCOME_TEXT_DESCRIPTION" %}</a></h2>
-    <div class="columns is-multiline">
+    <div class="columns is-multiline is-half">
         <div class="column">
             <div class="field">
             {% if messages %}
@@ -51,10 +51,10 @@
             </form>
             <div class="box">
                 <div class="columns is-mobile has-text-centered">
-                    <div class="column"><i class="fa-solid fa-play" title="{% trans "SITE_ICON_RUNNING_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{running}}</i></div>
-                    <div class="column"><i class="fa-solid fa-hourglass" title="{% trans "SITE_ICON_QUEUED_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{queued}}</i></div>
-                    <div class="column"><i class="fa-solid fa-skull" title="{% trans "SITE_ICON_ERRORED_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{errored}}</i></div>
-                    <div class="column"><i class="fa-solid fa-check" title="{% trans "SITE_ICON_FINISHING_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;&nbsp;{{finished}}</i></div>
+                    <div class="column"><i class="fa-solid fa-play" title="{% trans "SITE_ICON_RUNNING_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;{{running}}</i></div>
+                    <div class="column"><i class="fa-solid fa-hourglass" title="{% trans "SITE_ICON_QUEUED_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;{{queued}}</i></div>
+                    <div class="column"><i class="fa-solid fa-skull" title="{% trans "SITE_ICON_ERRORED_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;{{errored}}</i></div>
+                    <div class="column"><i class="fa-solid fa-check" title="{% trans "SITE_ICON_FINISHING_TASKS_TITLE" %}" aria-hidden="true">&nbsp;&nbsp;{{finished}}</i></div>
                 </div>
             </div>
 
