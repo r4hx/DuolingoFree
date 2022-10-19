@@ -56,6 +56,18 @@
               <span>{% trans "SITE_LINK_BLOG" %}</span>
             </a>
           </li>
+          <li>
+            {% if request.path == '/en/' %}
+            <a href="/ru">
+              <span class="icon"><img src="https://flagicons.lipis.dev/flags/4x3/ru.svg"></img></span>
+            </a>
+            {% endif %}
+            {% if request.path == '/ru/' %}
+            <a href="/en">
+              <span class="icon"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg"></img</span>
+            </a>
+            {% endif %}
+          </li>
         </ul>
     </div>
 
