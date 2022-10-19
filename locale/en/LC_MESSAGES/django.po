@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-19 05:11+0300\n"
+"POT-Creation-Date: 2022-10-19 05:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,74 +92,78 @@ msgstr "Egorov Egor"
 msgid "SITE_TITLE"
 msgstr "Duolingo Super Free"
 
-#: frontend/templates/index.html:19
+#: frontend/templates/index.html:18
 msgid "SITE_WELCOME_TEXT_TITLE"
 msgstr "Welcome to Duolingo Super Free!"
 
-#: frontend/templates/index.html:20
+#: frontend/templates/index.html:19
 msgid "DUOLINGO_PARTNERS_URL"
 msgstr ""
 "https://support.duolingo.com/hc/en-us/articles/4404225309581-How-does-the-"
 "referral-program-work-"
 
-#: frontend/templates/index.html:20
+#: frontend/templates/index.html:19
 msgid "SITE_WELCOME_TEXT_DESCRIPTION"
 msgstr "Get 7 days free, send your invition link below"
 
-#: frontend/templates/index.html:37
+#: frontend/templates/index.html:36
 msgid "SITE_SUBMIT_BUTTON_PLACEHOLDER"
 msgstr "Put the link here"
 
-#: frontend/templates/index.html:42
+#: frontend/templates/index.html:41
 msgid "SITE_FORM_HELP_TEXT_IDLE"
 msgstr "Your task will be launched instantly"
 
-#: frontend/templates/index.html:44
+#: frontend/templates/index.html:43
 #, python-format
 msgid "%(count)s SITE_FORM_HELP_TEXT_BUSY"
 msgstr "Your task will run after %(count)s minute(s)"
 
-#: frontend/templates/index.html:48
+#: frontend/templates/index.html:47
 msgid "SITE_SUBMIT_BUTTON_TEXT"
 msgstr "Submit"
 
-#: frontend/templates/index.html:55
+#: frontend/templates/index.html:54
 msgid "SITE_ICON_RUNNING_TASKS_TITLE"
 msgstr "Running tasks"
 
-#: frontend/templates/index.html:56
+#: frontend/templates/index.html:55
 msgid "SITE_ICON_QUEUED_TASKS_TITLE"
 msgstr "Tasks in queue"
 
-#: frontend/templates/index.html:57
+#: frontend/templates/index.html:56
 msgid "SITE_ICON_ERRORED_TASKS_TITLE"
 msgstr "Dropped tasks with error"
 
-#: frontend/templates/index.html:58
+#: frontend/templates/index.html:57
 msgid "SITE_ICON_FINISHING_TASKS_TITLE"
 msgstr "Finished tasks"
 
-#: frontend/templates/index.html:63
+#: frontend/templates/index.html:62
 msgid "SITE_RULES_LINE_ONE"
 msgstr "You can send the link more than once."
 
-#: frontend/templates/index.html:64
+#: frontend/templates/index.html:63
 msgid "SITE_RULES_LINE_TWO"
 msgstr "No login or password required."
 
-#: frontend/templates/index.html:65
+#: frontend/templates/index.html:64
 msgid "SITE_RULES_LINE_THREE"
 msgstr "Average task time 1 minute."
 
-#: frontend/templates/index.html:66
+#: frontend/templates/index.html:65
 msgid "SITE_RULES_LINE_FOR"
 msgstr "Only one slot for running."
 
-#: frontend/templates/index.html:67
+#: frontend/templates/index.html:66
 msgid "SITE_RULES_LINE_FIVE"
 msgstr "Just add new task if current is break."
 
-#: frontend/templates/index.html:68
+#: frontend/templates/index.html:67
+msgid "TG_CHAT_URL"
+msgstr "https://t.me/duoplusfree"
+
+#: frontend/templates/index.html:67
 msgid "SITE_RULES_LINE_SIX"
 msgstr "Any questions? Ask in the chat."
 
