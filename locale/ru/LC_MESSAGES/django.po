@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-19 05:35+0300\n"
+"POT-Creation-Date: 2022-10-20 15:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,25 +68,25 @@ msgstr "Дата завершения"
 msgid "MODEL_FINISHED_AT_HELP_TEXT"
 msgstr "Дата завершения задачи"
 
-#: frontend/templates/base.html:10
+#: frontend/templates/base.html:9
 msgid "SITE_DESCRIPTION"
 msgstr ""
 "Онлайн приложение для получения бесплатной подписки Duolingo Super. Не "
 "требует логина и пароля от вашей учетной записи."
 
-#: frontend/templates/base.html:44
+#: frontend/templates/base.html:43
 msgid "SITE_LINK_CHAT"
 msgstr "Чат"
 
-#: frontend/templates/base.html:50
+#: frontend/templates/base.html:49
 msgid "SITE_LINK_DONATE"
 msgstr "Поддержать"
 
-#: frontend/templates/base.html:56
+#: frontend/templates/base.html:55
 msgid "SITE_LINK_BLOG"
 msgstr "Блог"
 
-#: frontend/templates/base.html:67
+#: frontend/templates/base.html:78
 msgid "AUTHOR"
 msgstr "Егоров Егор"
 
@@ -106,7 +106,7 @@ msgstr ""
 
 #: frontend/templates/index.html:19
 msgid "SITE_WELCOME_TEXT_DESCRIPTION"
-msgstr "Получите 7 дней бесплатно по ссылке-приглашению"
+msgstr "Получите до 168 дней бесплатно по ссылке-приглашению"
 
 #: frontend/templates/index.html:36
 msgid "SITE_SUBMIT_BUTTON_PLACEHOLDER"

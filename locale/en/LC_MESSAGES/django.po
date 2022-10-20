@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-19 05:35+0300\n"
+"POT-Creation-Date: 2022-10-20 15:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,25 +66,25 @@ msgstr "Finished at"
 msgid "MODEL_FINISHED_AT_HELP_TEXT"
 msgstr "Finished at date"
 
-#: frontend/templates/base.html:10
+#: frontend/templates/base.html:9
 msgid "SITE_DESCRIPTION"
 msgstr ""
 "Online application for a free Duolingo Super subscription. Does not require "
 "a username and password for your account."
 
-#: frontend/templates/base.html:44
+#: frontend/templates/base.html:43
 msgid "SITE_LINK_CHAT"
 msgstr "Chat"
 
-#: frontend/templates/base.html:50
+#: frontend/templates/base.html:49
 msgid "SITE_LINK_DONATE"
 msgstr "Donate"
 
-#: frontend/templates/base.html:56
+#: frontend/templates/base.html:55
 msgid "SITE_LINK_BLOG"
 msgstr "Blog"
 
-#: frontend/templates/base.html:67
+#: frontend/templates/base.html:78
 msgid "AUTHOR"
 msgstr "Egorov Egor"
 
@@ -104,7 +104,7 @@ msgstr ""
 
 #: frontend/templates/index.html:19
 msgid "SITE_WELCOME_TEXT_DESCRIPTION"
-msgstr "Get 7 days free, send your invition link below"
+msgstr "Get up to 168 days free, send your invition link below"
 
 #: frontend/templates/index.html:36
 msgid "SITE_SUBMIT_BUTTON_PLACEHOLDER"
