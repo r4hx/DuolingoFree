@@ -89,6 +89,17 @@ services:
     networks:
       - internal
 
+  celery-beat:
+    image: duolingofree_migrate
+    container_name: 'celery-beat'
+    command: /bin/bash -c "python3 -m celery -A DuolingoFree beat -l INFO"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    networks:
+      - internal
+
   flower:
     image: mher/flower
     container_name: flower
