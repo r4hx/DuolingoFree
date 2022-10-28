@@ -29,3 +29,14 @@ def create_a_new_invited_user(self, pk: int):
         Telegram().send_message(message=f"Task #{task.pk} - ERROR")
         raise e
     return result
+
+
+@app.task(bind=True)
+def restart_tasks_with_errors(self):
+    """
+    Перезапускает задачи с ошибками
+    """
+    tasks = Task.objects.filter(state=4)
+    for t in tasks:
+        t.running_at = timezone.now()
+        t.save()

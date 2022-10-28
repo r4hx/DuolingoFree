@@ -1,6 +1,7 @@
 import os
 
 import celery
+from celery.schedules import crontab
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "DuolingoFree.settings")
 
@@ -13,3 +14,10 @@ app = celery.Celery(
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
 app.autodiscover_tasks()
+
+app.conf.beat_schedule = {
+    "restart_tasks_with_errors": {
+        "task": "backend.tasks.restart_tasks_with_errors",
+        "schedule": crontab(hour="12,00", minute="00"),
+    }
+}
