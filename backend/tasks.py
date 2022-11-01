@@ -38,5 +38,6 @@ def restart_tasks_with_errors(self):
     """
     tasks = Task.objects.filter(state=4)
     for t in tasks:
+        t.state = 0
         t.running_at = timezone.now()
         t.save()
