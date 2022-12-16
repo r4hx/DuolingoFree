@@ -244,6 +244,7 @@ class Duolingo:
         Открыть форму создания профиля
         """
         logging.info("Открываем форму создание пользователя")
+        time.sleep(1)
         try:
             self.browser.get("https://www.duolingo.com/shop")
             browser = WebDriverWait(
@@ -265,6 +266,7 @@ class Duolingo:
         Указать возраст
         """
         logging.info("Указываем возраст")
+        time.sleep(1)
         try:
             browser = WebDriverWait(
                 driver=self.browser,
