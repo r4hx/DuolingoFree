@@ -66,7 +66,8 @@ class Duolingo:
             self.set_email()
             self.set_password()
             self.submit_create_profile()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Задача аварийно остановилась")
             self.browser.quit()
         return self.task_result
@@ -114,7 +115,8 @@ class Duolingo:
             )
             xpath = '//*[@id="root"]/div/div/div[2]/div/div/ul/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при выборе языка для изучения")
             self.browser.quit()
 
@@ -130,11 +132,12 @@ class Duolingo:
                 timeout=self.time_to_wait_element,
                 poll_frequency=self.poll_frequency,
             )
-            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{self.f.random_int(1, 8)}]'
+            xpath = f'//*[@id="root"]/div[1]/div/div[2]/div/div/div/ul/div[{self.f.random_int(1, 9)}]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info(
                 "Возникла ошибка во время ответа на вопрос как узнали о Duolingo"
             )
@@ -156,7 +159,8 @@ class Duolingo:
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при ответе на вопрос о мотивации")
             self.browser.quit()
 
@@ -176,7 +180,8 @@ class Duolingo:
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при выборе цели дня")
             self.browser.quit()
 
@@ -193,7 +198,8 @@ class Duolingo:
             )
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/ul/li[3]/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при отказе уведомлений в социальных сетях")
             self.browser.quit()
 
@@ -210,7 +216,8 @@ class Duolingo:
             )
             xpath = '//*[@id="root"]/div[1]/div/div[2]/div/div/div/button[1]'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при выборе направления")
             self.browser.quit()
 
@@ -227,7 +234,8 @@ class Duolingo:
             )
             xpath = '//*[@id="root"]/div/div/div/div/div[1]/div/div/button'
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при закрытие первого урока")
             self.browser.quit()
 
@@ -247,7 +255,8 @@ class Duolingo:
                 '//*[@id="root"]/div[5]/div/div[2]/div/div[1]/div/div[2]/button[1]/span'
             )
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при открытие формы создания пользователя")
             self.browser.quit()
 
@@ -266,7 +275,8 @@ class Duolingo:
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
                 self.account_age
             )
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при указание возраста")
             self.browser.quit()
 
@@ -285,7 +295,8 @@ class Duolingo:
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
                 self.account_name
             )
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при указании имени")
             self.browser.quit()
 
@@ -304,7 +315,8 @@ class Duolingo:
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
                 self.account_email
             )
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при указании почты")
             self.browser.quit()
 
@@ -323,7 +335,8 @@ class Duolingo:
             browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).send_keys(
                 self.account_password
             )
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при укаании пароля")
             self.browser.quit()
 
@@ -346,6 +359,7 @@ class Duolingo:
             self.task_result = (
                 f"{self.account_name} {self.account_email}:{self.account_password}"
             )
-        except Exception:
+        except Exception as e:
+            logging.debug(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при подтверждении создания пользователя")
             self.browser.quit()

@@ -1,9 +1,9 @@
 from django.utils import timezone
-from DuolingoFree.celery import app
 
 from backend.duolingo import Duolingo
 from backend.models import Task
 from backend.telegram import Telegram
+from DuolingoFree.celery import app
 
 
 @app.task(bind=True, ignore_result=False)
