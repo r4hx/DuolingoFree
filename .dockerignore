@@ -10,3 +10,4 @@ static
 docker-compose.yml
 Dockerfile
 flower.db
+celerybeat-schedule

@@ -7,13 +7,7 @@ services:
     build: .
     container_name: 'migrate'
     command: >
-      /bin/bash -c "
-      python3 manage.py makemigrations --force-color --no-input -v 3
-      && python3 manage.py makemigrations --force-color --no-input -v 3 backend
-      && python3 manage.py makemigrations --force-color --no-input -v 3 frontend
-      && python3 manage.py migrate --force-color -v 3
-      && python3 manage.py collectstatic --noinput
-      && python3 manage.py createsuperuser --noinput"
+      /bin/bash -c " python3 manage.py makemigrations --force-color --no-input -v 3 && python3 manage.py makemigrations --force-color --no-input -v 3 backend && python3 manage.py makemigrations --force-color --no-input -v 3 frontend && python3 manage.py migrate --force-color -v 3 && python3 manage.py collectstatic --noinput && python3 manage.py createsuperuser --noinput"
     environment:
       - DJANGO_SUPERUSER_USERNAME=admin
       - DJANGO_SUPERUSER_PASSWORD=admin
@@ -121,7 +115,9 @@ services:
       - internal
 
   selenium:
-    image: selenium/standalone-firefox:4.1.2
+    # for arm
+    # image: seleniarm/standalone-chromium
+    image: selenium/standalone-chrome:108.0
     container_name: 'selenium'
     hostname: 'selenium'
     environment:

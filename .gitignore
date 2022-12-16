@@ -10,3 +10,4 @@ static
 backend/migrations
 docker-compose.yml
 flower.db
+celerybeat-schedule
