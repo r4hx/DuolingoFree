@@ -18,6 +18,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     "restart_tasks_with_errors": {
         "task": "backend.tasks.restart_tasks_with_errors",
-        "schedule": crontab(hour="12,00", minute="00"),
+        "schedule": crontab(minute="*/60"),
     }
 }
