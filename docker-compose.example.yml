@@ -121,7 +121,7 @@ services:
     container_name: 'selenium'
     hostname: 'selenium'
     environment:
-      - GRID_MAX_SESSION=5
+      - GRID_MAX_SESSION=1
       - GRID_TIMEOUT=120
       - GRID_BROWSER_TIMEOUT=120
     volumes:

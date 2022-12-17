@@ -35,7 +35,7 @@ class Duolingo:
         options.add_argument("disable-infobars")
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-plugins-discovery")
-        options.add_argument("--start-maximized")
+        # options.add_argument("--start-maximized")
         self.browser = webdriver.Remote(
             "http://selenium:4444/wd/hub",
             options=options,
@@ -239,14 +239,16 @@ class Duolingo:
                 poll_frequency=self.poll_frequency,
             )
             try:
-                xpath = (
-                    '//*[@id="root"]/div[4]/div/div[2]/div/div[1]/div/div[2]/button[1]'
-                )
+                # xpath = (
+                #     '//*[@id="root"]/div[4]/div/div[2]/div/div[1]/div/div[2]/button[1]'
+                # )
+                xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[1]/div/div[2]/button[1]/span'
                 browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             except Exception:
                 logging.info("Кнопка слева не найдена")
                 try:
-                    xpath = '//*[@id="root"]/div[4]/div/div[2]/div/div[2]/div[1]/div/div/button'
+                    # xpath = '//*[@id="root"]/div[4]/div/div[2]/div/div[2]/div[1]/div/div/button'
+                    xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[2]/div[1]/div/div/button/span'
                     browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
                 except Exception:
                     logging.info("Кнопка в центре не найдена")
