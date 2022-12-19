@@ -239,20 +239,24 @@ class Duolingo:
                 poll_frequency=self.poll_frequency,
             )
             try:
-                # xpath = (
-                #     '//*[@id="root"]/div[4]/div/div[2]/div/div[1]/div/div[2]/button[1]'
-                # )
-                xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[1]/div/div[2]/button[1]/span'
+                xpath = (
+                    '//*[@id="root"]/div[4]/div/div[2]/div/div[1]/div/div[2]/button[1]'
+                )
                 browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
             except Exception:
-                logging.info("Кнопка слева не найдена")
+                logging.info("Кнопка не найдена, пробуем еще раз.")
+                self.browser.get("https://www.duolingo.com/shop")
+                time.sleep(5)
+                browser = WebDriverWait(
+                    driver=self.browser,
+                    timeout=self.time_to_wait_element,
+                    poll_frequency=self.poll_frequency,
+                )
                 try:
-                    # xpath = '//*[@id="root"]/div[4]/div/div[2]/div/div[2]/div[1]/div/div/button'
-                    xpath = '//*[@id="root"]/div[5]/div/div[2]/div/div[2]/div[1]/div/div/button/span'
+                    xpath = '//*[@id="root"]/div[4]/div/div[2]/div/div[1]/div/div[2]/button[1]'
                     browser.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
                 except Exception:
-                    logging.info("Кнопка в центре не найдена")
-                    raise Exception
+                    logging.info("Кнопка не найдена и во второй раз.")
         except Exception as e:
             logging.info(f"Exception: {e}", exc_info=True)
             logging.info("Возникла ошибка при открытие формы создания пользователя")
